@@ -2,179 +2,178 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kavin Valli</title>
-    <link rel="stylesheet" href="styles.css">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Kavin Valli</title>
+	<link rel="stylesheet" href="styles.css">
 </head>
 
 <body class="text-gray-600 font-body">
-    <div class="grid md:grid-cols-5">
-        <!-- Content Wrapper -->
-        <div class="md:col-span-1 md:flex md:justify-end">
-            <nav class="text-right">
-                <div class="flex justify-between items-center">
-                    <h1 class="font-bold uppercase p-4 border-b border-gray-100">
-                        <a href="/" class="hover:text-gray-700">Kavin Valli</a>
-                    </h1>
-                    <div class="px-4 cursor-pointer md:hidden" id="burger">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M4 6h16M4 12h16M4 18h16"></path>
-                        </svg>
-                    </div>
-                </div>
-                <ul class="text-sm mt-6 hidden md:block" id="menu">
-                    <li class="text-gray-700 font-bold py-1">
-                        <a href="#" class="px-4 flex justify-end border-r-4 border-primary" target-div="home">
-                            <span>Home</span>
-                            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6">
-                                </path>
-                            </svg>
-                        </a>
-                    </li>
-                    <li class="py-1">
-                        <a href="#" class="px-4 flex justify-end border-r-4 border-white" target-div="about">
-                            <span>About</span>
-                            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
-                                </path>
-                            </svg>
-                        </a>
-                    </li>
-                    <li class="py-1">
-                        <a href="#" class="px-4 flex justify-end border-r-4 border-white" target-div="contact">
-                            <span>Contact</span>
-                            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
-                                </path>
-                            </svg>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-        </div> <!-- End Nav -->
-        <main class="px-16 py-6 bg-gray-100 md:col-span-4 min-h-screen">
-            <div id="home" class="pages">
-                <div class="flex justify-center md:justify-end">
-                    <!-- <a href="#"
+	<div class="grid md:grid-cols-4">
+		<!-- Content Wrapper -->
+		<div class="md:col-span-1 sticky top-0 md:h-screen bg-white z-50 md:flex md:justify-end">
+			<nav class="text-right">
+				<div class="flex justify-between items-center">
+					<h1 class="font-bold uppercase p-4 border-b border-gray-100">
+						<a href="/" class="hover:text-gray-700">Kavin Valli</a>
+					</h1>
+					<div class="px-4 cursor-pointer md:hidden" id="burger">
+						<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+							xmlns="http://www.w3.org/2000/svg">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+						</svg>
+					</div>
+				</div>
+				<ul class="text-sm mt-6 hidden md:block" id="menu">
+					<li class="text-gray-700 font-bold py-1">
+						<a href="#" class="px-4 flex justify-end border-r-4 border-primary" target-div="home">
+							<span>Home</span>
+							<svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+								xmlns="http://www.w3.org/2000/svg">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+									d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6">
+								</path>
+							</svg>
+						</a>
+					</li>
+					<li class="py-1">
+						<a href="#" class="px-4 flex justify-end border-r-4 border-white" target-div="about">
+							<span>About</span>
+							<svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+								xmlns="http://www.w3.org/2000/svg">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+									d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
+								</path>
+							</svg>
+						</a>
+					</li>
+					<li class="py-1">
+						<a href="#" class="px-4 flex justify-end border-r-4 border-white" target-div="contact">
+							<span>Contact</span>
+							<svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+								xmlns="http://www.w3.org/2000/svg">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+									d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+								</path>
+							</svg>
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</div> <!-- End Nav -->
+		<main class="px-16 py-6 bg-gray-100 md:col-span-3 min-h-screen">
+			<div id="home" class="pages">
+				<div class="flex justify-center md:justify-end">
+					<!-- <a href="#"
                         class="text-primary btn border-primary md:border-2 hover:bg-primary hover:text-white transition ease-out duration-500">Login</a>
                     <a href="#"
                         class="text-primary ml-2 btn border-primary md:border-2 hover:bg-primary hover:text-white transition ease-out duration-500">Sign
                         up</a> -->
-                </div>
-                <header>
-                    <h2 class="text-gray-700 text-6xl font-semibold">Full Stack</h2>
-                    <h3 class="text-2xl font-semibold">Django, React, Node JS, PostgreSQL, MongoDB</h3>
-                </header>
-                <div>
-                    <h4 class="font-bold mt-12 pb-2 border-b border-gray-200">Latest Projects</h4>
+				</div>
+				<header>
+					<h2 class="text-gray-700 text-6xl font-semibold">Full Stack</h2>
+					<h3 class="text-2xl font-semibold">Django, React, Node JS, PostgreSQL, MongoDB</h3>
+				</header>
+				<div>
+					<h4 class="font-bold mt-12 pb-2 border-b border-gray-200">Latest Projects</h4>
 
-                    <div class="mt-8 grid lg:grid-cols-3 gap-10">
-                        <!-- Cards go here -->
-                        <a href="http://quiz.kavin.me" target="_blank">
-                            <div class="card hover:shadow-lg">
-                                <img src="img/quiz.jpg" alt="stew" class="w-full h-32 sm:h-48 object-cover">
-                                <div class="m-4">
-                                    <span class="font-bold">Jeopardy Quiz</span>
-                                    <span class="block text-grey-500 text-sm">quiz.kavin.me</span>
-                                </div>
-                                <div class="badge">
-                                    <svg class="w-5 h-5 inline-block" fill="none" stroke="currentColor"
-                                        viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z">
-                                        </path>
-                                    </svg>
-                                    <span>Django, HTML, CSS, JS</span>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="http://trivy.kavin.me" target="_blank">
-                            <div class="card hover:shadow-lg">
-                                <img src="img/trivy.png" alt="trivy" class="w-full h-32 sm:h-48 object-cover">
-                                <div class="m-4">
-                                    <span class="font-bold">Trivy - Xino 2020</span>
-                                    <span class="block text-grey-500 text-sm">trivy.kavin.me</span>
-                                </div>
-                                <div class="badge">
-                                    <svg class="w-5 h-5 inline-block" fill="none" stroke="currentColor"
-                                        viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z">
-                                        </path>
-                                    </svg>
-                                    <span>Django, HTML, CSS, JS</span>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="https://litdemonyt.github.io" target="_blank">
-                            <div class="card hover:shadow-lg">
-                                <img src="img/litdemonyt.png" alt="curry" class="w-full h-32 sm:h-48 object-cover">
-                                <div class="m-4">
-                                    <span class="font-bold">LitDEMON YT Landing Page</span>
-                                    <span class="block text-grey-500 text-sm">litdemonyt.github.io</span>
-                                </div>
-                                <div class="badge">
-                                    <svg class="w-5 h-5 inline-block" fill="none" stroke="currentColor"
-                                        viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z">
-                                        </path>
-                                    </svg>
-                                    <span>HTML, SCSS</span>
-                                </div>
-                            </div>
-                        </a> 
-                    </div>
-                    <div class="hidden mt-8 grid lg:grid-cols-3 gap-10" id="hidden_projects">
-                        <div></div>
-                        <a href="https://kavin25.github.io/tailwind-responsive-practice/" target="_blank">
-                            <div class="card hover:shadow-lg">
-                                <img src="img/tailwind.png" alt="tailwind" class="w-full h-32 sm:h-48 object-cover">
-                                <div class="m-4">
-                                    <span class="font-bold">Tailwind Responsive Website</span>
-                                    <span
-                                        class="block text-grey-500 text-sm">kavin25.github.io/tailwind-responsive-practice/</span>
-                                </div>
-                                <div class="badge">
-                                    <svg class="w-5 h-5 inline-block" fill="none" stroke="currentColor"
-                                        viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z">
-                                        </path>
-                                    </svg>
-                                    <span>HTML, Tailwind, JS</span>
-                                </div>
-                            </div>
-                        </a>
-                        <div></div>
-                    </div>
-                    <div class="flex justify-center">
-                        <div
-                            class="bg-secondary-100 text-secondary-200 btn hover:shadow-inner transform hover:scale-125 hover:bg-opacity-50 transition ease-out duration-300 mt-10" id="load_more">
-                            Load more</div>
-                    </div>
-                    <h4 class="font-bold mt-12 pb-2 border-b border-gray-200">My Github</h4>
+					<div class="mt-8 grid lg:grid-cols-3 gap-10">
+						<!-- Cards go here -->
+						<a href="http://quiz.kavin.me" target="_blank">
+							<div class="card hover:shadow-lg">
+								<img src="img/quiz.jpg" alt="stew" class="w-full h-32 sm:h-48 object-cover">
+								<div class="m-4">
+									<span class="font-bold">Jeopardy Quiz</span>
+									<span class="block text-grey-500 text-sm">quiz.kavin.me</span>
+								</div>
+								<div class="badge">
+									<svg class="w-5 h-5 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+										xmlns="http://www.w3.org/2000/svg">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+											d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z">
+										</path>
+									</svg>
+									<span>Django, HTML, CSS, JS</span>
+								</div>
+							</div>
+						</a>
+						<a href="http://trivy.kavin.me" target="_blank">
+							<div class="card hover:shadow-lg">
+								<img src="img/trivy.png" alt="trivy" class="w-full h-32 sm:h-48 object-cover">
+								<div class="m-4">
+									<span class="font-bold">Trivy - Xino 2020</span>
+									<span class="block text-grey-500 text-sm">trivy.kavin.me</span>
+								</div>
+								<div class="badge">
+									<svg class="w-5 h-5 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+										xmlns="http://www.w3.org/2000/svg">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+											d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z">
+										</path>
+									</svg>
+									<span>Django, HTML, CSS, JS</span>
+								</div>
+							</div>
+						</a>
+						<a href="https://litdemonyt.github.io" target="_blank">
+							<div class="card hover:shadow-lg">
+								<img src="img/litdemonyt.png" alt="curry" class="w-full h-32 sm:h-48 object-cover">
+								<div class="m-4">
+									<span class="font-bold">LitDEMON YT Landing Page</span>
+									<span class="block text-grey-500 text-sm">litdemonyt.github.io</span>
+								</div>
+								<div class="badge">
+									<svg class="w-5 h-5 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+										xmlns="http://www.w3.org/2000/svg">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+											d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z">
+										</path>
+									</svg>
+									<span>HTML, SCSS</span>
+								</div>
+							</div>
+						</a>
+					</div>
+					<div class="hidden mt-8 grid lg:grid-cols-3 gap-10" id="hidden_projects">
+						<div></div>
+						<a href="https://kavin25.github.io/tailwind-responsive-practice/" target="_blank">
+							<div class="card hover:shadow-lg">
+								<img src="img/tailwind.png" alt="tailwind" class="w-full h-32 sm:h-48 object-cover">
+								<div class="m-4">
+									<span class="font-bold">Tailwind Responsive Website</span>
+									<span class="block text-grey-500 text-sm">kavin25.github.io/tailwind-responsive-practice/</span>
+								</div>
+								<div class="badge">
+									<svg class="w-5 h-5 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+										xmlns="http://www.w3.org/2000/svg">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+											d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z">
+										</path>
+									</svg>
+									<span>HTML, Tailwind, JS</span>
+								</div>
+							</div>
+						</a>
+						<div></div>
+					</div>
+					<div class="flex justify-center">
+						<div
+							class="bg-secondary-100 text-secondary-200 btn hover:shadow-inner transform hover:scale-125 hover:bg-opacity-50 transition ease-out duration-300 mt-10"
+							id="load_more">
+							Load more</div>
+					</div>
+					<h4 class="font-bold mt-12 pb-2 border-b border-gray-200">My Github</h4>
 
-                    <div class="mt-8 lg:grid lg:grid-cols-3">
-                        <div></div>
-                        <a href="https://www.github.com/kavin25" target="_blank">
-                            <div class="card hover:shadow-lg">
-                                <img src="img/github.png" alt="stew" class="w-full h-32 sm:h-48 object-cover">
-                                <div class="m-4">
-                                    <span class="font-bold">Github</span>
-                                    <span class="block text-grey-500 text-sm">www.github.com/kavin25</span>
-                                </div>
-                                <!-- <div class="badge">
+					<div class="mt-8 lg:grid lg:grid-cols-3">
+						<div></div>
+						<a href="https://www.github.com/kavin25" target="_blank">
+							<div class="card hover:shadow-lg">
+								<img src="img/github.png" alt="stew" class="w-full h-32 sm:h-48 object-cover">
+								<div class="m-4">
+									<span class="font-bold">Github</span>
+									<span class="block text-grey-500 text-sm">www.github.com/kavin25</span>
+								</div>
+								<!-- <div class="badge">
                                     <svg class="w-5 h-5 inline-block" fill="none" stroke="currentColor"
                                         viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -183,103 +182,103 @@
                                     </svg>
                                     <span>Django, HTML, CSS</span>
                                 </div> -->
-                            </div>
-                        </a>
-                        <div></div>
-                    </div>
-                    <!-- <div class="flex justify-center">
+							</div>
+						</a>
+						<div></div>
+					</div>
+					<!-- <div class="flex justify-center">
                         <div
                             class="bg-secondary-100 text-secondary-200 btn hover:shadow-inner transform hover:scale-125 hover:bg-opacity-50 transition ease-out duration-300">
                             Load more</div>
                     </div> -->
-                </div>
-            </div>
-            <div id="about" class="hidden pages">
-                <div class="flex justify-center md:justify-end">
-                    <!-- <a href="#"
+				</div>
+			</div>
+			<div id="about" class="hidden pages">
+				<div class="flex justify-center md:justify-end">
+					<!-- <a href="#"
                         class="text-primary btn border-primary md:border-2 hover:bg-primary hover:text-white transition ease-out duration-500">Login</a>
                     <a href="#"
                         class="text-primary ml-2 btn border-primary md:border-2 hover:bg-primary hover:text-white transition ease-out duration-500">Sign
                         up</a> -->
-                </div>
-                <header>
-                    <h2 class="text-gray-700 text-6xl font-semibold">About Me</h2>
-                    <h3 class="text-2xl font-semibold">I am a 14 year old, who aspires to be a full-stack developer</h3>
-                </header>
-                <div>
-                    <h4 class="font-bold mt-12 pb-2 border-b border-gray-200">School</h4>
-                    <div class="mt-4">
-                        <p>I study in DPS, R.K. Puram and am an Ad-hoc at Exun, the tech club at DPS, RKP</p>
-                    </div>
-                    <h4 class="font-bold mt-12 pb-2 border-b border-gray-200">Programming Life</h4>
-                    <div class="mt-4">
-                        <p>I started programming when I was 11 years old, but became more profficient and interested in
-                            programming when I was 13. I started with Frontend (HTML and CSS) and then, Python after
-                            which I learnt Django, which is a web framework built in python. I have also done Flask,
-                            whcih is another python based wbe framework for small scale web applications. Then, I
-                            started learning ReactJS and NodeJS along with MongoDB. So, I can pretty much work with the
-                            MERN stack, but I prefer working with Django which is much more scalable as show to us by
-                            Instagram and Youtube</p>
-                    </div>
-                    <h4 class="font-bold mt-12 pb-2 border-b border-gray-200">What I plan for?</h4>
-                    <div class="mt-4">
-                        <p>I plan to become a full-stack programmer at one of the largest companies in the world and
-                            want to keep on learning new technologies which will be coming up. I am also trying to learn
-                            mobile app development now. I can pretty much integrate React Native with the Backend but am
-                            not very proefficient with the looks and feel in the same.</p>
-                    </div>
-                </div>
-            </div>
-            <div id="contact" class="hidden pages">
-                <div class="flex justify-center md:justify-end">
-                    <!-- <a href="#"
+				</div>
+				<header>
+					<h2 class="text-gray-700 text-6xl font-semibold">About Me</h2>
+					<h3 class="text-2xl font-semibold">I am a 14 year old, who aspires to be a full-stack developer</h3>
+				</header>
+				<div>
+					<h4 class="font-bold mt-12 pb-2 border-b border-gray-200">School</h4>
+					<div class="mt-4">
+						<p>I study in DPS, R.K. Puram and am an Ad-hoc at Exun, the tech club at DPS, RKP</p>
+					</div>
+					<h4 class="font-bold mt-12 pb-2 border-b border-gray-200">Programming Life</h4>
+					<div class="mt-4">
+						<p>I started programming when I was 11 years old, but became more profficient and interested in
+							programming when I was 13. I started with Frontend (HTML and CSS) and then, Python after
+							which I learnt Django, which is a web framework built in python. I have also done Flask,
+							whcih is another python based wbe framework for small scale web applications. Then, I
+							started learning ReactJS and NodeJS along with MongoDB. So, I can pretty much work with the
+							MERN stack, but I prefer working with Django which is much more scalable as show to us by
+							Instagram and Youtube</p>
+					</div>
+					<h4 class="font-bold mt-12 pb-2 border-b border-gray-200">What I plan for?</h4>
+					<div class="mt-4">
+						<p>I plan to become a full-stack programmer at one of the largest companies in the world and
+							want to keep on learning new technologies which will be coming up. I am also trying to learn
+							mobile app development now. I can pretty much integrate React Native with the Backend but am
+							not very proefficient with the looks and feel in the same.</p>
+					</div>
+				</div>
+			</div>
+			<div id="contact" class="hidden pages">
+				<div class="flex justify-center md:justify-end">
+					<!-- <a href="#"
                         class="text-primary btn border-primary md:border-2 hover:bg-primary hover:text-white transition ease-out duration-500">Login</a>
                     <a href="#"
                         class="text-primary ml-2 btn border-primary md:border-2 hover:bg-primary hover:text-white transition ease-out duration-500">Sign
                         up</a> -->
-                </div>
-                <header>
-                    <h2 class="text-gray-700 text-6xl font-semibold">Contact Me</h2>
-                    <h3 class="text-2xl font-semibold">I am very easy to contact</h3>
-                </header>
-                <div>
-                    <h4 class="font-bold mt-12 pb-2 border-b border-gray-200">Mediums of Contact</h4>
+				</div>
+				<header>
+					<h2 class="text-gray-700 text-6xl font-semibold">Contact Me</h2>
+					<h3 class="text-2xl font-semibold">I am very easy to contact</h3>
+				</header>
+				<div>
+					<h4 class="font-bold mt-12 pb-2 border-b border-gray-200">Mediums of Contact</h4>
 
-                    <div class="mt-8 grid lg:grid-cols-3 gap-10">
-                        <!-- Cards go here -->
-                        <a href="https://www.facebook.com/kavin.valli.35/" target="_blank">
-                            <div class="card hover:shadow-lg">
-                                <img src="img/facebook.png" alt="facebook" class="w-full h-32 sm:h-48 object-cover">
-                                <div class="m-4">
-                                    <span class="font-bold">Facebook</span>
-                                    <span class="block text-grey-500 text-sm">kavin.valli.35</span>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="mailto:kavinvalli@gmail.com" target="_blank">
-                            <div class="card hover:shadow-lg">
-                                <img src="img/gmail.png" alt="gmail" class="w-full h-32 sm:h-48 object-cover">
-                                <div class="m-4">
-                                    <span class="font-bold">Gmail</span>
-                                    <span class="block text-grey-500 text-sm">kavinvalli@gmail.com</span>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="https://instagram.com/kavin25125" target="_blank">
-                            <div class="card hover:shadow-lg">
-                                <img src="img/instagram.png" alt="gmail" class="w-full h-32 sm:h-48 object-cover">
-                                <div class="m-4">
-                                    <span class="font-bold">Instagram</span>
-                                    <span class="block text-grey-500 text-sm">kavin25125</span>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </main>
-    </div>
-    <script src="index.js"></script>
+					<div class="mt-8 grid lg:grid-cols-3 gap-10">
+						<!-- Cards go here -->
+						<a href="https://www.facebook.com/kavin.valli.35/" target="_blank">
+							<div class="card hover:shadow-lg">
+								<img src="img/facebook.png" alt="facebook" class="w-full h-32 sm:h-48 object-cover">
+								<div class="m-4">
+									<span class="font-bold">Facebook</span>
+									<span class="block text-grey-500 text-sm">kavin.valli.35</span>
+								</div>
+							</div>
+						</a>
+						<a href="mailto:kavinvalli@gmail.com" target="_blank">
+							<div class="card hover:shadow-lg">
+								<img src="img/gmail.png" alt="gmail" class="w-full h-32 sm:h-48 object-cover">
+								<div class="m-4">
+									<span class="font-bold">Gmail</span>
+									<span class="block text-grey-500 text-sm">kavinvalli@gmail.com</span>
+								</div>
+							</div>
+						</a>
+						<a href="https://instagram.com/kavin25125" target="_blank">
+							<div class="card hover:shadow-lg">
+								<img src="img/instagram.png" alt="gmail" class="w-full h-32 sm:h-48 object-cover">
+								<div class="m-4">
+									<span class="font-bold">Instagram</span>
+									<span class="block text-grey-500 text-sm">kavin25125</span>
+								</div>
+							</div>
+						</a>
+					</div>
+				</div>
+			</div>
+		</main>
+	</div>
+	<script src="index.js"></script>
 </body>
 
 </html>
