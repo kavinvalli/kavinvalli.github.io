@@ -71,3 +71,10 @@ for (let i = 0; i < navItems.length; i++) {
         }
     })
 }
+
+loadMoreBtn = document.querySelector('#load_more')
+loadMoreBtn.addEventListener('click', () => {
+    hiddenProjects = document.querySelector('#hidden_projects');
+    hiddenProjects.classList.remove('hidden')
+    loadMoreBtn.classList.add('hidden')
+})
