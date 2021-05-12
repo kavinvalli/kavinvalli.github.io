@@ -75,6 +75,7 @@ nav ul li {
   height: 100vh;
   justify-content: center;
   align-items: center;
+  padding: 8px;
 }
 
 main {
