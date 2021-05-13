@@ -77,8 +77,8 @@ function submitListener(e) {
           <p class="command">clear <span style="color: var(--primary)">(Ctrl+L shortcut)</span></p>
           <p class="meaning">Clear the terminal</p>
         </div>
-        <br /><br />
-        <div class="help-command">Type on of the above to view. For eg. <span style="color: var(--secondary)">about</span></div>
+        <br />
+        <div class="help-command">Type one of the above to view. For eg. <span style="color: var(--secondary)">about</span></div>
       `;
       mainElement.appendChild(div);
       break;
