@@ -77,6 +77,8 @@ function submitListener(e) {
           <p class="command">clear <span style="color: var(--primary)">(Ctrl+L shortcut)</span></p>
           <p class="meaning">Clear the terminal</p>
         </div>
+        <br /><br />
+        <div class="help-command">Type on of the above to view. For eg. <span style="color: var(--secondary)">about</span></div>
       `;
       mainElement.appendChild(div);
       break;
@@ -95,7 +97,8 @@ function submitListener(e) {
         <br />
         I am a student at <a href="https://dpsrkp.net" target="_blank">Delhi Public School, R.K. Puram</a>
       `;
-      mainElement.appendChild(aboutDiv);
+      mainElement.appendChild(
+        Div);
       break;
     case "contact":
       const contactDiv = document.createElement("div");
