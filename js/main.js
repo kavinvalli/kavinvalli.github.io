@@ -97,8 +97,7 @@ function submitListener(e) {
         <br />
         I am a student at <a href="https://dpsrkp.net" target="_blank">Delhi Public School, R.K. Puram</a>
       `;
-      mainElement.appendChild(
-        Div);
+      mainElement.appendChild(aboutDiv);
       break;
     case "contact":
       const contactDiv = document.createElement("div");
