@@ -116,7 +116,7 @@ const contents = {
   about: `
     My name is Kavin and I\'m a fullstack web developer
     <br/><br/>
-    I love coding in Javascript and Python, and have worked with frameworks like ReactJS, VueJS, Express, and Django.
+    I love coding in Javascript, Typescript and Python, and have worked with frameworks like ReactJS, VueJS, Express, and Django.
     <br /><br />
     I am a developer at <a href="https://tricycle.life" target="_blank">Tricycle</a> and <a href="https://exunclan.com" target="_blank">Exun Clan</a>
     <br />
@@ -128,7 +128,7 @@ const contents = {
     <br />
     I am a member of <a href="https://enship-club.github.io" target="_blank">Enship</a> and <a href="https://exunclan.com">Exun Clan</a>, the Tech Club.`,
   skills: `
-  I am experienced with Javascript and Python and the web technologies dominating at the time:<br />
+  I am experienced with Javascript, Typescript and Python and the web technologies dominating at the time:<br />
   <b>core</b>: HTML, CSS and Node.js<br />
   <b>frameworks</b>: Express, React, Gatsby, NextJS and Django<br />
   <b>database</b>: MongoDB, PostgreSQL, MySQL, and SQLite<br />
