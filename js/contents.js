@@ -24,7 +24,7 @@ const contents = {
     <br/><br/>
     I love coding in Javascript and Python, and have worked with frameworks like ReactJS, VueJS, Express, and Django.
     <br /><br />
-    I am a developer at <a href="https://exunclan.com" target="_blank">Exun Clan</a>
+    I am a developer at <a href="https://tricycle.life" target="_blank">Tricycle</a> and <a href="https://exunclan.com" target="_blank">Exun Clan</a>
     <br />
     I am a student at <a href="https://dpsrkp.net" target="_blank">Delhi Public School, R.K. Puram</a>
   `,
