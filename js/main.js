@@ -42,6 +42,11 @@ const renderSkills = () => {
   output(skillsDiv);
 };
 
+const renderProjects = () => {
+  const projectsDiv = createContentElement(contents.projects);
+  output(projectsDiv);
+};
+
 const renderContact = () => {
   const contactDiv = createContentElement(
     contactMediums.map((contact) => contents.contact(contact)).join("")
@@ -56,7 +61,7 @@ const renderCommandNotFound = () => {
 
 function submitListener(e) {
   e.preventDefault();
-  switch (input.value) {
+  switch (input.value.toLowerCase()) {
     case "help":
       renderHelp();
       break;
@@ -77,6 +82,9 @@ function submitListener(e) {
       break;
     case "blog":
       window.open("https://livecode247.com", "_blank");
+      break;
+    case "projects":
+      renderProjects();
       break;
     default:
       renderCommandNotFound();

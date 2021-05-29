@@ -26,6 +26,23 @@ const helpCommands = [
   },
 ];
 
+const projects = [
+  {
+    name: "Exun Notifications Platform",
+    description:
+      "Notification management and realtime notification platform built with NodeJS and Express. Used to send push notifications to the Exun 2020 App during the 25th International Tech Symposium, Exun 2020",
+    stack: "Javascript, NodeJS, Express",
+    link: "https://exunclan.com",
+  },
+  {
+    name: "Job Application Portal",
+    description:
+      "[e-Lite 2020] Complete solution for applying to new and managing existing jobs of the KoolKidsKlub (fluff)",
+    stack: "Python, Django",
+    link: "https://github.com/kavin25/koolkidsexun",
+  },
+];
+
 const contents = {
   help:
     helpCommands
@@ -61,6 +78,15 @@ const contents = {
 <br /><br />
   I also have experience with Mobile Development with Flutter.
   `,
+  projects:
+    `<h3>My Projects</h3>
+  <br />` +
+    projects.map(
+      (project) => `<div class="help-flex">
+        <p class="command">${command.command}</p>
+        <p class="meaning">${command.description}</p>
+      </div>`
+    ),
   contact: (contact) => `<div class="help-flex">
       <p class="command">${contact.medium}</p>
       <a class="meaning" href="${contact.link}" target="_blank">${contact.username}</a>
