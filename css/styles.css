@@ -13,8 +13,11 @@
   --background-color: #282a36;
 }
 
-body {
+* {
   font-family: "Fira Code", sans-serif;
+}
+
+body {
   background-color: var(--background-color);
   color: var(--text-color);
   font-size: 15px;
@@ -105,7 +108,7 @@ input {
   font-size: 15px;
 }
 
-.help-command {
+.command {
   font-size: 15px;
 }
 
@@ -122,10 +125,6 @@ input {
   50% {
     color: var(--primary);
   }
-}
-
-.wb-title {
-  font-family: "Fira Code", sans-serif;
 }
 
 .wb-body {

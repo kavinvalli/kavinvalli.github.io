@@ -22,36 +22,25 @@ const contactMediums = [
 
 input.addEventListener("keyup", checkCtrlL);
 
-const output = (el) => {
-  mainElement.appendChild(el);
-};
-
 const renderHelp = () => {
-  const helpDiv = document.createElement("div");
-  helpDiv.className = "help-command";
-  helpDiv.innerHTML = contents.help;
+  const helpDiv = createContentElement(contents.help);
   output(helpDiv);
 };
 
 const renderAbout = () => {
-  const aboutDiv = document.createElement("div");
-  aboutDiv.className = "help-command";
-  aboutDiv.innerHTML = contents.about;
+  const aboutDiv = createContentElement(contents.about);
   output(aboutDiv);
 };
 
 const renderContact = () => {
-  const contactDiv = document.createElement("div");
-  contactDiv.className = "help-command";
-  contactMediums.forEach(
-    (contact) => (contactDiv.innerHTML += contents.contact(contact))
+  const contactDiv = createContentElement(
+    contactMediums.map((contact) => contents.contact(contact)).join("")
   );
   output(contactDiv);
 };
 
 const renderCommandNotFound = () => {
-  const errorDiv = document.createElement("div");
-  errorDiv.innerHTML = contents.error(input);
+  const errorDiv = createContentElement(contents.error(input));
   output(errorDiv);
 };
 

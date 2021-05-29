@@ -29,3 +29,15 @@ const checkCtrlL = (e) => {
     renderNewForm();
   }
 };
+
+const output = (el) => {
+  mainElement.appendChild(el);
+};
+
+const createContentElement = (content) => {
+  const div = document.createElement("div");
+  div.className = "command";
+  div.innerHTML = content;
+
+  return div;
+};
