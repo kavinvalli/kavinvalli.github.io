@@ -12,6 +12,10 @@ const helpCommands = [
     description: "My Tech Skills",
   },
   {
+    command: "projects",
+    description: "My Tech Projects",
+  },
+  {
     command: "contact",
     description: "Contact Me",
   },
@@ -28,7 +32,7 @@ const helpCommands = [
 
 const projects = [
   {
-    name: "Exun Notifications Platform",
+    name: "Exun Notifications Platform (Cannot share code/link)",
     description:
       "Notification management and realtime notification platform built with NodeJS and Express. Used to send push notifications to the Exun 2020 App during the 25th International Tech Symposium, Exun 2020",
     stack: ["Javascript", "NodeJS", "Express"],
@@ -40,6 +44,60 @@ const projects = [
       "[e-Lite 2020] Complete solution for applying to new and managing existing jobs of the KoolKidsKlub (fluff)",
     stack: ["Python", "Django"],
     link: "https://github.com/kavin25/koolkidsexun",
+  },
+  {
+    name: "Trivy",
+    description:
+      "Airbnb for Tour Guides. Explore the city with people who know it the best. Finalist in XINO's Exquisite hackathon.",
+    stack: ["Python", "Django"],
+    link: "https://github.com/kavin25/Xino-Hackathon2020",
+  },
+  {
+    name: "Discord Task Manager Bot",
+    description:
+      "A Task Manager Bot you can add to your discord servers (created with the help of the Discord API)",
+    stack: ["Javascript", "NodeJS"],
+    link: "https://top.gg/bot/829723733966979142",
+  },
+  {
+    name: "DPS Notices Tracker Discord Bot",
+    description:
+      "A Discord bot to track my school's notices and send a discord msg when it's been updated",
+    stack: ["Python"],
+    link: "https://github.com/kavin25/dps-notices-discord",
+  },
+  {
+    name: "DPS Notices Tracker Email Bot",
+    description:
+      "A bot to track my school's notices and send an email when it's been updated",
+    stack: ["Python"],
+    link: "https://github.com/kavin25/dps-notices-discord",
+  },
+  {
+    name: "Snapix",
+    description:
+      "A landing page (and discussion section), for a Video Editing Software. Winner of Script@trix 2020",
+    stack: ["Python", "Django"],
+    link: "https://github.com/kavin25/scriptatrix20",
+  },
+  {
+    name: "Cricket VSCode Extension",
+    description:
+      "A VSCode Extension to show Cricket News and LiveScores from inside the editor",
+    stack: ["Javascript"],
+    link: "https://github.com/kavin25/cricket-vscode-extension",
+  },
+  {
+    name: "URL Shortener",
+    description: "A URL Shortener written in NodeJS and Express with MongoDB",
+    stack: ["Javascript", "NodeJS", "Express"],
+    link: "https://github.com/kavin25/url-shortener",
+  },
+  {
+    name: "FourEss Games",
+    description: "A screenshare based quiz app for friends and family",
+    stack: ["Python", "Django"],
+    link: "https://github.com/kavin25/jeopardyquiz-with-django",
   },
 ];
 
@@ -79,7 +137,7 @@ const contents = {
   I also have experience with Mobile Development with Flutter.
   `,
   projects:
-    `<h3>My Projects</h3>` +
+    `<h3>My Projects (You can scroll)</h3>` +
     projects
       .map(
         (project) => `<div class="command">
