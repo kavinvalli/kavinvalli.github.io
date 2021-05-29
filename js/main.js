@@ -32,6 +32,16 @@ const renderAbout = () => {
   output(aboutDiv);
 };
 
+const renderEducation = () => {
+  const educationDiv = createContentElement(contents.education);
+  output(educationDiv);
+};
+
+const renderSkills = () => {
+  const skillsDiv = createContentElement(contents.skills);
+  output(skillsDiv);
+};
+
 const renderContact = () => {
   const contactDiv = createContentElement(
     contactMediums.map((contact) => contents.contact(contact)).join("")
@@ -55,6 +65,12 @@ function submitListener(e) {
       break;
     case "about":
       renderAbout();
+      break;
+    case "education":
+      renderEducation();
+      break;
+    case "skills":
+      renderSkills();
       break;
     case "contact":
       renderContact();
