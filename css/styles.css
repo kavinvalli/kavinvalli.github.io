@@ -83,7 +83,13 @@ nav ul li {
 
 main {
   width: 100%;
-  overflow: scroll;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+main::-webkit-scrollbar {
+  display: none;
 }
 
 .hidden {
