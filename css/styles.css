@@ -27,7 +27,6 @@ body {
 h1 {
   color: var(--primary);
   font-size: 50px;
-  letter-spacing: -5px;
   margin-bottom: 20px;
 }
 

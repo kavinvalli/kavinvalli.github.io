@@ -1,3 +1,7 @@
+h1 {
+  letter-spacing: -5px;
+}
+
 .prompt {
   color: #8be9fd;
   font-size: 16px;
@@ -79,7 +83,7 @@ input {
 /*}*/
 
 button#change-type {
-  position: absolute;
+  position: fixed;
   top: 10px;
   bottom: auto;
   right: 10px;

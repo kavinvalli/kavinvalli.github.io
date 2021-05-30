@@ -30,8 +30,8 @@
           <h2>Kavin Valli</h2>
           <ul>
             <li><a href="/">Home</a></li>
-            <li><a href="/#education">Education</a></li>
-            <li><a href="/#skills">Skills</a></li>
+            <!--<li><a href="/#education">Education</a></li>-->
+            <!--<li><a href="/#skills">Skills</a></li>-->
             <li><a href="/projects">Projects</a></li>
             <li>
               <a href="https://livecode247.com" target="_blank">Blog</a>
@@ -41,10 +41,20 @@
 
         <main>
           <div class="content">
-            <img src="https://via.placeholder.com/150" alt="Me" />
+            <img src="images/me.jpeg" alt="Me" />
             <div class="text">
-              <h2>About Me</h2>
-              <p id="about-me"></p>
+              <div id="about">
+                <h2>About Me</h2>
+                <p id="about-me"></p>
+              </div>
+              <div id="education">
+                <h2>Education</h2>
+                <p id="education-content"></p>
+              </div>
+              <div id="skills">
+                <h2>Skills</h2>
+                <p id="skills-content"></p>
+              </div>
             </div>
           </div>
         </main>
@@ -58,6 +68,9 @@
 
     <script>
       document.getElementById("about-me").innerHTML = contents.about;
+      document.getElementById("education-content").innerHTML =
+        contents.education;
+      document.getElementById("skills-content").innerHTML = contents.skills;
     </script>
   </body>
 </html>
