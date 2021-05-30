@@ -68,5 +68,6 @@ const toggleType = (currentType) => {
 
   const newType = currentType === "normal" ? "terminal" : "normal";
   localStorage.setItem("KAVIN_WEBSITE_TYPE", newType);
+  window.location.href = "/";
   return newType;
 };

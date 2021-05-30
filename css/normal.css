@@ -1,10 +1,83 @@
+main {
+  padding-bottom: 50px;
+}
+
 .container {
-  max-width: 600px;
+  max-width: 900px;
   margin: auto;
+  height: 100vh;
+  padding: 8px;
+}
+
+button#change-type {
+  position: fixed;
+  bottom: 10px;
+  top: auto;
+  right: 10px;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  width: 100% !important;
+}
+
+nav ul {
+  display: flex;
+}
+
+nav li {
+  padding: 8px;
+}
+
+main {
+  margin-top: 32px;
+}
+
+main img {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+}
+
+main .content {
   display: flex;
   flex-direction: column;
-  height: 100vh;
-  justify-content: center;
   align-items: center;
-  padding: 8px;
+  width: 100% !important;
+}
+
+main .content .text {
+  width: 100% !important;
+  margin-left: 24px;
+}
+
+main .content .text p {
+  padding: 12px 0;
+  font-size: 1rem;
+}
+
+main .content .text p .skill {
+  margin: 4px 0;
+}
+
+.project-card {
+  width: 100%;
+  border: 1px solid #fff;
+  padding: 16px;
+  border-radius: 8px;
+  margin: 16px 0;
+}
+
+.project-card .header {
+  display: flex;
+  justify-content: space-between;
+}
+
+@media (min-width: 768px) {
+  main .content {
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: flex-start;
+  }
 }

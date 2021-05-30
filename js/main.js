@@ -16,9 +16,9 @@ link.href = `css/${currentType}.css`;
 head.appendChild(link);
 toggleHTML(currentType === "normal" ? "terminal" : "normal");
 
-document.getElementById("change-type-link").addEventListener("click", () => {
-  currentType = toggleType(currentType);
-});
+//document.getElementById("change-type-link").addEventListener("click", () => {
+//currentType = toggleType(currentType);
+//});
 
 changeTypeButton.addEventListener("click", () => {
   currentType = toggleType(currentType);

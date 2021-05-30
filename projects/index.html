@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kavin Valli - Projects</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/normal.css" />
+</head>
+<body>
+      <div class="container">
+        <nav>
+          <h2>Kavin Valli</h2>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/projects">Projects</a></li>
+            <li>
+              <a href="https://livecode247.com" target="_blank">Blog</a>
+            </li>
+          </ul>
+        </nav>
+
+        <main>
+          <div class="text"> 
+            <h2>Projects</h2>
+            <p id="projects">
+            
+        </main>
+      </div>
+    </div>
+
+    <button id="change-type">Change View (Normal Website Mode)</button>
+</body>
+
+<script src="js/contents.js"></script>
+<script>
+  document.getElementById("projects").innerHTML = projects.map(project => `
+  <div class="project-card">
+              <div class="header">
+              <h3>
+        <a href="${project.link}" target="_blank"><b class="command">${project.name}</b></a> </h3> <b>${project.stack.join(", ")}</b>
+              </div>
+              <p class="description">${project.description}</p>
+            </div>
+            </p>
+          </div>
+  `).join("")
+</script>
+</html>

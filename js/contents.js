@@ -129,9 +129,9 @@ const contents = {
     I am a member of <a href="https://enship-club.github.io" target="_blank">Enship</a> and <a href="https://exunclan.com">Exun Clan</a>, the Tech Club.`,
   skills: `
   I am experienced with Javascript, Typescript and Python and the web technologies dominating at the time:<br />
-  <b>core</b>: HTML, CSS and Node.js<br />
-  <b>frameworks</b>: Express, React, Gatsby, NextJS and Django<br />
-  <b>database</b>: MongoDB, PostgreSQL, MySQL, and SQLite<br />
+  <div class="skill"><b>core</b>: HTML, CSS and Node.js<br /></div>
+  <div class="skill"><b>frameworks</b>: Express, React, Gatsby, NextJS and Django<br /></div>
+  <div class="skill"><b>database</b>: MongoDB, PostgreSQL, MySQL, and SQLite<br /></div>
   I also have knowledge of basic shell scripting and my dotfiles can be found <a href="https://github.com/kavin25/.dotfiles" target="_blank">here</a>.
 <br /><br />
   I also have experience with Mobile Development with Flutter.
