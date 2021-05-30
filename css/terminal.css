@@ -77,3 +77,10 @@ input {
 /*.modal p {*/
 /*margin: 20px 0;*/
 /*}*/
+
+button#change-type {
+  position: absolute;
+  top: 10px;
+  bottom: auto;
+  right: 10px;
+}
