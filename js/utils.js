@@ -41,3 +41,32 @@ const createContentElement = (content) => {
 
   return div;
 };
+
+const toggleCSS = (currentType) => {
+  const links = document.querySelectorAll("link");
+  const lastLink = links[links.length - 1];
+  const newType = currentType === "normal" ? "terminal" : "normal";
+  lastLink.href = `css/${newType}.css`;
+};
+
+const toggleHTML = (currentType) => {
+  const currentElement = document.getElementById(currentType);
+  currentElement.style.display = "none";
+  const newType = currentType === "normal" ? "terminal" : "normal";
+  const newElement = document.getElementById(newType);
+  newElement.style.display = "block";
+
+  const button = document.querySelector("button#change-type");
+  button.innerText = `Change View (${
+    currentType.charAt(0).toUpperCase() + currentType.slice(1)
+  } Website Mode)`;
+};
+
+const toggleType = (currentType) => {
+  toggleCSS(currentType);
+  toggleHTML(currentType);
+
+  const newType = currentType === "normal" ? "terminal" : "normal";
+  localStorage.setItem("KAVIN_WEBSITE_TYPE", newType);
+  return newType;
+};

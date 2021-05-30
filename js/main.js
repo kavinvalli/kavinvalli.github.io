@@ -1,6 +1,28 @@
 let form = document.getElementById("command");
 let input = document.getElementById("command-input");
 const mainElement = document.querySelector("main");
+const changeTypeButton = document.getElementById("change-type");
+
+let currentType =
+  localStorage.getItem("KAVIN_WEBSITE_TYPE") === "normal"
+    ? "normal"
+    : "terminal";
+
+const head = document.querySelector("head");
+const link = document.createElement("link");
+link.rel = "stylesheet";
+link.type = "text/css";
+link.href = `css/${currentType}.css`;
+head.appendChild(link);
+toggleHTML(currentType === "normal" ? "terminal" : "normal");
+
+document.getElementById("change-type-link").addEventListener("click", () => {
+  currentType = toggleType(currentType);
+});
+
+changeTypeButton.addEventListener("click", () => {
+  currentType = toggleType(currentType);
+});
 
 const contactMediums = [
   {
