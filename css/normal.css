@@ -19,7 +19,25 @@ button#change-type {
 nav {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   width: 100% !important;
+}
+
+nav .title {
+  display: flex;
+  align-items: center;
+}
+
+nav img {
+  height: 30px;
+  width: 30px;
+  margin-right: 8px;
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+}
+
+nav img:hover {
+  transform: scale(1.2);
 }
 
 nav ul {
@@ -63,7 +81,7 @@ main .content .text p .skill {
 
 .project-card {
   width: 100%;
-  border: 1px solid #fff;
+  border: 1px solid var(--secondary);
   padding: 16px;
   border-radius: 8px;
   margin: 16px 0;

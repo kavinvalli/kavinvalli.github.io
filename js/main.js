@@ -14,7 +14,40 @@ link.rel = "stylesheet";
 link.type = "text/css";
 link.href = `css/${currentType}.css`;
 head.appendChild(link);
-toggleHTML(currentType === "normal" ? "terminal" : "normal");
+
+if (window.location.pathname === "/") {
+  toggleHTML(currentType === "normal" ? "terminal" : "normal");
+  form.addEventListener("submit", submitListener);
+  input.addEventListener("keyup", checkCtrlL);
+}
+
+const setTheme = (themeName) => {
+  localStorage.setItem("KAVIN_WEBSITE_THEME", themeName);
+  document.documentElement.className = themeName;
+  document.querySelectorAll("img.theme-toggle-btn").forEach((img) => {
+    img.src =
+      themeName === "theme-dark"
+        ? "https://someshkar.com/icons/moon.png"
+        : "https://someshkar.com/icons/sun.png";
+    console.log(themeName);
+  });
+};
+
+const toggleTheme = () => {
+  if (localStorage.getItem("KAVIN_WEBSITE_THEME") === "theme-dark") {
+    setTheme("theme-light");
+  } else {
+    setTheme("theme-dark");
+  }
+};
+
+(function () {
+  if (localStorage.getItem("KAVIN_WEBSITE_THEME") === "theme-light") {
+    setTheme("theme-light");
+  } else {
+    setTheme("theme-dark");
+  }
+})();
 
 //document.getElementById("change-type-link").addEventListener("click", () => {
 //currentType = toggleType(currentType);
@@ -41,8 +74,6 @@ const contactMediums = [
     link: "https://www.facebook.com/kavin.valli.25/",
   },
 ];
-
-input.addEventListener("keyup", checkCtrlL);
 
 const renderHelp = () => {
   const helpDiv = createContentElement(contents.help);
@@ -114,5 +145,3 @@ function submitListener(e) {
   }
   renderNewForm();
 }
-
-form.addEventListener("submit", submitListener);

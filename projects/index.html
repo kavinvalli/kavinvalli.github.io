@@ -4,13 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kavin Valli - Projects</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="../css/styles.css" />
   <link rel="stylesheet" href="../css/normal.css" />
 </head>
 <body>
       <div class="container">
         <nav>
+        <div class="title">
+            <img class="theme-toggle-btn" onclick="toggleTheme()" src="https://someshkar.com/icons/moon.png" alt="Moon">
+            <!--<img src="https://someshkar.com/icons/sun.png" alt="Sun">-->
           <h2>Kavin Valli</h2>
+        </div>
           <ul>
             <li><a href="/">Home</a></li>
             <li><a href="/projects">Projects</a></li>
@@ -32,6 +37,8 @@
     <button id="change-type">Change View (Normal Website Mode)</button>
 </body>
 
+<script src="../js/utils.js"></script>
+<script src="../js/main.js"></script>
 <script src="../js/contents.js"></script>
 <script>
   document.getElementById("projects").innerHTML = projects.map(project => `

@@ -6,7 +6,14 @@
   padding: 0;
 }
 
-:root {
+.theme-light {
+  --text-color: #333;
+  --primary: #ff79c6;
+  --secondary: #bd93f9;
+  --background-color: #fff;
+}
+
+.theme-dark {
   --text-color: #f8f8f2;
   --primary: #ff79c6;
   --secondary: #bd93f9;
@@ -71,4 +78,16 @@ button {
   padding: 8px;
   border-radius: 4px;
   cursor: pointer;
+}
+
+.theme-toggle-btn {
+  height: 30px;
+  width: 30px;
+  margin-right: 8px;
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+}
+
+.theme-toggle-btn:hover {
+  transform: scale(1.2);
 }

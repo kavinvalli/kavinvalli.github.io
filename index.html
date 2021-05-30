@@ -9,7 +9,15 @@
   <body>
     <div id="terminal">
       <div class="container">
-        <h1>kavinvalli:$ <span class="help">type help to start</span></h1>
+        <h1>
+          kavinvalli:$ <span class="help">type help to start</span>
+          <img
+            onclick="toggleTheme()"
+            src="https://someshkar.com/icons/moon.png"
+            alt="Moon"
+            class="theme-toggle-btn"
+          />
+        </h1>
         <main>
           <form id="command">
             <span class="prompt">~/Users/kavinvalli ➜</span
@@ -27,7 +35,16 @@
     <div id="normal" style="display: none">
       <div class="container">
         <nav>
-          <h2>Kavin Valli</h2>
+          <div class="title">
+            <img
+              onclick="toggleTheme()"
+              src="https://someshkar.com/icons/moon.png"
+              alt="Moon"
+              class="theme-toggle-btn"
+            />
+            <!--<img src="https://someshkar.com/icons/sun.png" alt="Sun">-->
+            <h2>Kavin Valli</h2>
+          </div>
           <ul>
             <li><a href="/">Home</a></li>
             <!--<li><a href="/#education">Education</a></li>-->
