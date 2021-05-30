@@ -1,52 +1,63 @@
-<Education!DOCTYPE html>
-  <html lang="en">
-    <head>
-      <meta charset="UTF-8" />
-      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <link rel="stylesheet" href="css/styles.css" />
-      <title>Welcome</title>
-    </head>
-    <body>
-      <div id="terminal">
-        <div class="container">
-          <h1>kavinvalli:$ <span class="help">type help to start</span></h1>
-          <main>
-            <form id="command">
-              <span class="prompt">~/Users/kavinvalli ➜</span
-              ><input
-                type="text"
-                id="command-input"
-                autofocus
-                autocomplete="off"
-              />
-            </form>
-          </main>
-        </div>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <title>Welcome</title>
+  </head>
+  <body>
+    <div id="terminal">
+      <div class="container">
+        <h1>kavinvalli:$ <span class="help">type help to start</span></h1>
+        <main>
+          <form id="command">
+            <span class="prompt">~/Users/kavinvalli ➜</span
+            ><input
+              type="text"
+              id="command-input"
+              autofocus
+              autocomplete="off"
+            />
+          </form>
+        </main>
       </div>
+    </div>
 
-      <div id="normal" style="display: none">
-        <div class="container">
-          <nav>
-            <h2>Kavin Valli</h2>
-            <ul>
-              <!--<li>Home</li>-->
-              <!--<li>Education</li>-->
-              <!--<li>Skills</li>-->
-              <!--<li>Projects</li>-->
-              <li><a href="/">Home</a></li>
-              <li><a href="/education">Education</a></li>
-              <li><a href="/skills">Skills</a></li>
-              <li><a href="/projects">Projects</a></li>
-            </ul>
-          </nav>
-        </div>
+    <div id="normal" style="display: none">
+      <div class="container">
+        <nav>
+          <h2>Kavin Valli</h2>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/#education">Education</a></li>
+            <li><a href="/#skills">Skills</a></li>
+            <li><a href="/projects">Projects</a></li>
+            <li>
+              <a href="https://livecode247.com" target="_blank">Blog</a>
+            </li>
+          </ul>
+        </nav>
+
+        <main>
+          <div class="content">
+            <img src="https://via.placeholder.com/150" alt="Me" />
+            <div class="text">
+              <h2>About Me</h2>
+              <p id="about-me"></p>
+            </div>
+          </div>
+        </main>
       </div>
+    </div>
 
-      <button id="change-type">Change View (Normal Website Mode)</button>
-      <script src="js/contents.js"></script>
-      <script src="js/utils.js"></script>
-      <script src="js/main.js"></script>
-    </body>
-  </html>
-</Education!DOCTYPE>
+    <button id="change-type">Change View (Normal Website Mode)</button>
+    <script src="js/contents.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/main.js"></script>
+
+    <script>
+      document.getElementById("about-me").innerHTML = contents.about;
+    </script>
+  </body>
+</html>

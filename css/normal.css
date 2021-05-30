@@ -25,3 +25,24 @@ nav ul {
 nav li {
   padding: 8px;
 }
+
+main {
+  margin-top: 32px;
+}
+
+main img {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+}
+
+main .content {
+  display: flex;
+  justify-content: space-between;
+  width: 100% !important;
+}
+
+main .content .text {
+  width: 100% !important;
+  margin-left: 24px;
+}
