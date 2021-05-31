@@ -57,24 +57,6 @@ changeTypeButton.addEventListener("click", () => {
   currentType = toggleType(currentType);
 });
 
-const contactMediums = [
-  {
-    medium: "github",
-    username: "kavin25",
-    link: "https://github.com/kavin25",
-  },
-  {
-    medium: "email",
-    username: "kavinvalli@gmail.com",
-    link: "mailto:kavinvalli@gmail.com",
-  },
-  {
-    medium: "facebook",
-    username: "kavin.valli.25",
-    link: "https://www.facebook.com/kavin.valli.25/",
-  },
-];
-
 const renderHelp = () => {
   const helpDiv = createContentElement(contents.help);
   output(helpDiv);
@@ -101,9 +83,7 @@ const renderProjects = () => {
 };
 
 const renderContact = () => {
-  const contactDiv = createContentElement(
-    contactMediums.map((contact) => contents.contact(contact)).join("")
-  );
+  const contactDiv = createContentElement(contents.contact);
   output(contactDiv);
 };
 

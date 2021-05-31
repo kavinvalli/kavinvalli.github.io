@@ -101,6 +101,24 @@ const projects = [
   },
 ];
 
+const contactMediums = [
+  {
+    medium: "github",
+    username: "kavin25",
+    link: "https://github.com/kavin25",
+  },
+  {
+    medium: "email",
+    username: "kavinvalli@gmail.com",
+    link: "mailto:kavinvalli@gmail.com",
+  },
+  {
+    medium: "facebook",
+    username: "kavin.valli.25",
+    link: "https://www.facebook.com/kavin.valli.25/",
+  },
+];
+
 const contents = {
   help:
     helpCommands
@@ -146,10 +164,14 @@ const contents = {
       </div>`
       )
       .join(""),
-  contact: (contact) => `<div class="help-flex">
+  contact: contactMediums
+    .map(
+      (contact) => `<div class="help-flex">
       <p class="command">${contact.medium}</p>
       <a class="meaning" href="${contact.link}" target="_blank">${contact.username}</a>
-    </div>`,
+    </div>`
+    )
+    .join(""),
   error: (input) =>
     `<div class="help-command">sh: Unknown command: ${input.value}</div><div class="help-command">See \`help\` for info`,
 };
