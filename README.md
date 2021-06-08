@@ -7,4 +7,4 @@ Kavin's portfolio website
 3. Javascript
 
 ## Todo
-- [ ] Normal Mode Website
+- [x] Normal Mode Website
