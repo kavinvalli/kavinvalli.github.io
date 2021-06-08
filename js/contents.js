@@ -109,8 +109,8 @@ const contactMediums = [
   },
   {
     medium: "email",
-    username: "kavinvalli@gmail.com",
-    link: "mailto:kavinvalli@gmail.com",
+    username: "mail@kavin.me",
+    link: "mailto:mail@kavin.me",
   },
   {
     medium: "facebook",
