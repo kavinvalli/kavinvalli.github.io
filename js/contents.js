@@ -117,6 +117,11 @@ const contactMediums = [
     username: "kavin.valli.25",
     link: "https://www.facebook.com/kavin.valli.25/",
   },
+  {
+    medium: "linkedin",
+    username: "kavinvalli",
+    link: "https://www.linkedin.com/in/kavinvalli/",
+  },
 ];
 
 const contents = {
