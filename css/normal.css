@@ -118,6 +118,20 @@ main .content .text p .skill {
   justify-content: space-between;
 }
 
+.contact-card {
+  width: 100%;
+  border: 1px solid var(--secondary);
+  padding: 16px;
+  border-radius: 8px;
+  margin: 16px 0;
+}
+
+.contact-card .header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 @media (min-width: 768px) {
   main .content {
     justify-content: space-between;

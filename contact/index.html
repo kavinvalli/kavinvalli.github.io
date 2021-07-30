@@ -34,7 +34,7 @@
         <main>
           <div class="text"> 
             <h2>Contact</h2>
-            <p id="projects">
+            <p id="contacts">
             
         </main>
       </div>
@@ -47,8 +47,8 @@
 <script src="../js/main.js"></script>
 <script src="../js/contents.js"></script>
 <script>
-  document.getElementById("projects").innerHTML = contactMediums.map(contact => `
-  <div class="project-card">
+  document.getElementById("contacts").innerHTML = contactMediums.map(contact => `
+  <div class="contact-card">
               <div class="header">
               <h3>
         <a href="${contact.link}" target="_blank"><b class="command">${contact.medium}</b></a> </h3> <b>${contact.username}</b>
