@@ -132,6 +132,10 @@ main .content .text p .skill {
   justify-content: space-between;
 }
 
+.contact-card h3 {
+  margin: 0;
+}
+
 @media (min-width: 768px) {
   main .content {
     justify-content: space-between;
