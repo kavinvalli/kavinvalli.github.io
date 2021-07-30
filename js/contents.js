@@ -64,7 +64,7 @@ const projects = [
     description:
       'The landing page for "Ambulify", a product created at Innovate@trix 2021 competition',
     stack: ["Javascript", "NextJS"],
-    link: "https://ambulify.kavin.me",
+    link: "https://github.com/kavin25/innovate-trix-2021-static",
   },
   {
     name: "DPS Notices Tracker Discord Bot",
