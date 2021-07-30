@@ -47,16 +47,26 @@
 <script src="../js/main.js"></script>
 <script src="../js/contents.js"></script>
 <script>
-  document.getElementById("projects").innerHTML = projects.map(project => `
+  document.getElementById("projects").innerHTML = projects.map(project => {
+  let imageURL = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKpXjV0hDlxWepU6X_rjxzIKmrfMhPc9VUqg&usqp=CAU"
+    if (project.image) {
+      imageURL = `../images/projects/${project.image}`
+    }
+    return (`
   <div class="project-card">
-              <div class="header">
-              <h3>
-        <a href="${project.link}" target="_blank"><b class="command">${project.name}</b></a> </h3> <b>${project.stack.join(", ")}</b>
+              <img src="${imageURL}" alt="">
+              <div class="project-content">
+                <div class="header">
+                  <h3>
+                    <a href="${project.link}" target="_blank"><b class="command">${project.name}</b></a>
+                  </h3>
+                  <b>${project.stack.join(", ")}</b>
+                </div>
+                <p class="description">${project.description}</p>
               </div>
-              <p class="description">${project.description}</p>
             </div>
-            </p>
           </div>
-  `).join("")
+  `)
+  }).join("")
 </script>
 </html>

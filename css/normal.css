@@ -80,11 +80,37 @@ main .content .text p .skill {
 }
 
 .project-card {
+  display: flex;
+  flex-direction: row;
   width: 100%;
   border: 1px solid var(--secondary);
   padding: 16px;
   border-radius: 8px;
   margin: 16px 0;
+}
+
+@media only screen and (max-width: 596px) {
+  .project-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .project-card .header {
+    display: block !important;
+  }
+
+  .project-card h3 {
+    margin: 0;
+  }
+}
+
+.project-card .project-content {
+  margin-left: 12px;
+}
+
+.project-card img {
+  background-color: white;
 }
 
 .project-card .header {
