@@ -46,7 +46,7 @@ const toggleCSS = (currentType) => {
   const links = document.querySelectorAll("link");
   const lastLink = links[links.length - 1];
   const newType = currentType === "normal" ? "terminal" : "normal";
-  lastLink.href = `css/${newType}.css`;
+  lastLink.href = `css/${newType}.min.css`;
 };
 
 const toggleHTML = (currentType) => {
