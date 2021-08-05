@@ -40,6 +40,14 @@ const projects = [
     image: "exun.png",
   },
   {
+    name: "Discord Task Manager Bot",
+    description:
+      "A Task Manager Bot you can add to your discord servers (created with the help of the Discord API)",
+    stack: ["Javascript", "NodeJS"],
+    link: "https://task-manager-bot.github.io",
+    image: "task-bot.png",
+  },
+  {
     name: "Job Application Portal",
     description:
       "[e-Lite 2020] Complete solution for applying to new and managing existing jobs of the KoolKidsKlub (fluff)",
@@ -54,14 +62,6 @@ const projects = [
     stack: ["Python", "Django"],
     link: "https://github.com/kavin25/Xino-Hackathon2020",
     image: "trivy.png",
-  },
-  {
-    name: "Discord Task Manager Bot",
-    description:
-      "A Task Manager Bot you can add to your discord servers (created with the help of the Discord API)",
-    stack: ["Javascript", "NodeJS"],
-    link: "https://top.gg/bot/829723733966979142",
-    image: "task-bot.png",
   },
   {
     name: "Ambulify Landing Page",
