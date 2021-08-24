@@ -32,6 +32,14 @@ const helpCommands = [
 
 const projects = [
   {
+    name: "Cognizer",
+    description:
+      "A Chrome Extension that allows you to connect with people during and also soon after the conference or meet ends. Second Runner's up at Code Warriors soBig.s Hackathon 2021",
+    stack: ["Javascript", "NodeJS", "Adonis", "Chrome Extension API"],
+    link: "https://cognizer.kavin.me/",
+    image: "cognizer.png",
+  },
+  {
     name: "Exun Notifications Platform (Cannot share code/link)",
     description:
       "Notification management and realtime notification platform built with NodeJS and Express. Used to send push notifications to the Exun 2020 App during the 25th International Tech Symposium, Exun 2020",
