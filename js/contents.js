@@ -34,7 +34,7 @@ const projects = [
   {
     name: "Enship Website",
     description:
-      "A Chrome Extension that allows you to connect with people during and also soon after the conference or meet ends. Second Runner's up at Code Warriors soBig.s Hackathon 2021",
+      "I designed and developed the website for my school’s entrepreneurship club - Enship",
     stack: ["Javascript", "NextJS"],
     link: "https://enship-club.github.com/",
     image: "enship.jpeg",
@@ -48,14 +48,6 @@ const projects = [
     link: "https://new-delhi-space-society.github.com/",
     image: "ndss.png",
     largeImage: "ndss-lg.png",
-  },
-  {
-    name: "Cognizer",
-    description:
-      "A Chrome Extension that allows you to connect with people during and also soon after the conference or meet ends. Second Runner's up at Code Warriors soBig.s Hackathon 2021",
-    stack: ["Javascript", "NodeJS", "Adonis", "Chrome Extension API"],
-    link: "https://cognizer.kavin.me/",
-    image: "cognizer.png",
   },
   {
     name: "Cognizer",
