@@ -32,6 +32,32 @@ const helpCommands = [
 
 const projects = [
   {
+    name: "Enship Website",
+    description:
+      "A Chrome Extension that allows you to connect with people during and also soon after the conference or meet ends. Second Runner's up at Code Warriors soBig.s Hackathon 2021",
+    stack: ["Javascript", "NextJS"],
+    link: "https://enship-club.github.com/",
+    image: "enship.jpeg",
+    largeImage: "enship-lg.png",
+  },
+  {
+    name: "New Delhi Space Society Website",
+    description:
+      "I designed and developed New Delhi Space Society’s Website - A chapter of the National Space Society",
+    stack: ["Typescript", "NextJS"],
+    link: "https://new-delhi-space-society.github.com/",
+    image: "ndss.png",
+    largeImage: "ndss-lg.png",
+  },
+  {
+    name: "Cognizer",
+    description:
+      "A Chrome Extension that allows you to connect with people during and also soon after the conference or meet ends. Second Runner's up at Code Warriors soBig.s Hackathon 2021",
+    stack: ["Javascript", "NodeJS", "Adonis", "Chrome Extension API"],
+    link: "https://cognizer.kavin.me/",
+    image: "cognizer.png",
+  },
+  {
     name: "Cognizer",
     description:
       "A Chrome Extension that allows you to connect with people during and also soon after the conference or meet ends. Second Runner's up at Code Warriors soBig.s Hackathon 2021",

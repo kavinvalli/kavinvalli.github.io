@@ -24,8 +24,7 @@ nav {
 }
 
 nav .title {
-  display: flex;
-  align-items: center;
+  display: none !important;
 }
 
 nav img {
@@ -137,6 +136,11 @@ main .content .text p .skill {
 }
 
 @media (min-width: 768px) {
+  nav .title {
+    display: flex;
+    align-items: center;
+  }
+
   main .content {
     justify-content: space-between;
     flex-direction: row;
