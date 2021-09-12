@@ -47,9 +47,9 @@ const toggleTheme = () => {
 //currentType = toggleType(currentType);
 //});
 
-changeTypeButton.addEventListener("click", () => {
-  currentType = toggleType(currentType);
-});
+// changeTypeButton.addEventListener("click", () => {
+//   currentType = toggleType(currentType);
+// });
 
 const renderHelp = () => {
   const helpDiv = createContentElement(contents.help);
