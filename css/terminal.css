@@ -82,7 +82,7 @@ input {
 /*margin: 20px 0;*/
 /*}*/
 
-button#change-type {
+a button {
   position: fixed;
   top: 10px;
   bottom: auto;

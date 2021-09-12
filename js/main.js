@@ -3,23 +3,15 @@ let input = document.getElementById("command-input");
 const mainElement = document.querySelector("main");
 const changeTypeButton = document.getElementById("change-type");
 
-let currentType =
-  localStorage.getItem("KAVIN_WEBSITE_TYPE") === "normal"
-    ? "normal"
-    : "terminal";
-
 const head = document.querySelector("head");
 const link = document.createElement("link");
 link.rel = "stylesheet";
 link.type = "text/css";
-link.href = `css/${currentType}.min.css`;
+link.href = `css/terminal.min.css`;
 head.appendChild(link);
 
-if (window.location.pathname === "/") {
-  toggleHTML(currentType === "normal" ? "terminal" : "normal");
-  form.addEventListener("submit", submitListener);
-  input.addEventListener("keyup", checkCtrlL);
-}
+form.addEventListener("submit", submitListener);
+input.addEventListener("keyup", checkCtrlL);
 
 const setTheme = (themeName) => {
   localStorage.setItem("KAVIN_WEBSITE_THEME", themeName);
@@ -42,6 +34,8 @@ const toggleTheme = () => {
 };
 
 (function () {
+  localStorage.setItem("KAVIN_WEBSITE_TYPE", "terminal");
+
   if (localStorage.getItem("KAVIN_WEBSITE_THEME") === "theme-light") {
     setTheme("theme-light");
   } else {
