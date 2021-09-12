@@ -36,7 +36,7 @@ const projects = [
     description:
       "I designed and developed the website for my school’s entrepreneurship club - Enship",
     stack: ["Javascript", "NextJS"],
-    link: "https://enship-club.github.com/",
+    link: "https://enship-club.github.io/",
     image: "enship.jpeg",
     largeImage: "enship-lg.png",
   },
@@ -48,6 +48,14 @@ const projects = [
     link: "https://new-delhi-space-society.github.com/",
     image: "ndss.png",
     largeImage: "ndss-lg.png",
+  },
+  {
+    name: "CBSE Rebrand",
+    description:
+      "Rebranded CBSE Platform made using AdonisJS for CORE 2021. Creative Winners",
+    stack: ["Javascript", "NodeJS", "Adonis"],
+    link: "https://cbse.kavin.me/",
+    image: "cbse.png",
   },
   {
     name: "Cognizer",
