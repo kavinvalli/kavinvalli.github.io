@@ -50,14 +50,6 @@ const projects = [
     largeImage: "ndss-lg.png",
   },
   {
-    name: "CBSE Rebrand",
-    description:
-      "Rebranded CBSE Platform made using AdonisJS for CORE 2021. Creative Winners",
-    stack: ["Javascript", "NodeJS", "Adonis"],
-    link: "https://cbse.kavin.me/",
-    image: "cbse.png",
-  },
-  {
     name: "Cognizer",
     description:
       "A Chrome Extension that allows you to connect with people during and also soon after the conference or meet ends. Second Runner's up at Code Warriors soBig.s Hackathon 2021",
@@ -72,6 +64,14 @@ const projects = [
     stack: ["Javascript", "NodeJS", "Express"],
     link: "https://exunclan.com",
     image: "exun.png",
+  },
+  {
+    name: "CBSE Rebrand",
+    description:
+      "Rebranded CBSE Platform made using AdonisJS for CORE 2021. Creative Winners",
+    stack: ["Javascript", "NodeJS", "Adonis"],
+    link: "https://cbse.kavin.me/",
+    image: "cbse.png",
   },
   {
     name: "Discord Task Manager Bot",
