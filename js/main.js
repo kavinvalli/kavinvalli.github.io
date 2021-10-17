@@ -17,10 +17,7 @@ const setTheme = (themeName) => {
   localStorage.setItem("KAVIN_WEBSITE_THEME", themeName);
   document.documentElement.className = themeName;
   document.querySelectorAll("img.theme-toggle-btn").forEach((img) => {
-    img.src =
-      themeName === "theme-dark"
-        ? "https://someshkar.com/icons/moon.png"
-        : "https://someshkar.com/icons/sun.png";
+    img.src = themeName === "theme-dark" ? "images/moon.png" : "images/sun.png";
     console.log(themeName);
   });
 };
