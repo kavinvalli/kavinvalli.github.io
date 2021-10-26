@@ -1,0 +1,9 @@
+.input {
+  background-color: transparent;
+  border: 0;
+  outline: none;
+  padding-left: 6px;
+  color: var(--text-color);
+  min-width: calc(100% - 100px);
+  /* font-size: 15px; */
+}
