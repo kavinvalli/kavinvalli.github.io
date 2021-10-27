@@ -38,7 +38,6 @@ body {
 h1 {
   color: var(--primary);
   font-size: 32px;
-  margin-bottom: 20px;
 }
 
 @media only screen and (min-width: 600px) {
