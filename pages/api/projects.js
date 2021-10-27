@@ -24,7 +24,7 @@ export default async function handler(req, res) {
         description:
           "I designed and developed New Delhi Space Society’s Website - A chapter of the National Space Society",
         stack: ["Typescript", "NextJS"],
-        link: "https://new-delhi-space-society.github.com/",
+        link: "https://new-delhi-space-society.github.io/",
         image: "ndss.png",
         largeImage: "ndss-lg.png",
       },
