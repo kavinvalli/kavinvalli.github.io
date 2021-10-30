@@ -1,29 +1,21 @@
 import { useEffect, useState, useRef } from "react";
 import styles from "./Input.module.css";
 
-// const useFocus = () => {
-//   const htmlElRef = useRef(null);
-//   const setFocus = () => {
-//     htmlElRef.current && htmlElRef.current.focus();
-//   };
-
-//   console.log("here");
-
-//   return [htmlElRef, setFocus];
-// };
-
 export default function Input({ command, onSubmit }) {
   const [_command, setCommand] = useState(command ? command : "");
-  // const [inputRef, setInputRef] = useFocus();
 
-  // useEffect(() => {
-  //   if (!command) return setInputRef();
-  // }, [command, setInputRef]);
+  const escapeHTML = (str) =>
+    str
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setCommand("");
-    return onSubmit(_command);
+    return onSubmit(escapeHTML(_command));
   };
 
   return (
