@@ -8,6 +8,14 @@ export default function Terminal() {
   const [loading, setLoading] = useState(false);
   const terminalRef = useRef(null);
 
+  const escapeHTML = (str) =>
+    str
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
+
   const addCommand = async (command) => {
     let output;
     setLoading(true);
@@ -18,7 +26,7 @@ export default function Terminal() {
       setLoading(false);
       return setCommands([]);
     } else {
-      output = CONTENTS.error(command);
+      output = CONTENTS.error(escapeHTML(command));
     }
 
     setLoading(false);

@@ -4,18 +4,10 @@ import styles from "./Input.module.css";
 export default function Input({ command, onSubmit }) {
   const [_command, setCommand] = useState(command ? command : "");
 
-  const escapeHTML = (str) =>
-    str
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      .replace(/"/g, "&quot;")
-      .replace(/'/g, "&#039;");
-
   const handleSubmit = (e) => {
     e.preventDefault();
     setCommand("");
-    return onSubmit(escapeHTML(_command));
+    return onSubmit(_command);
   };
 
   return (
