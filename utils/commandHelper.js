@@ -87,7 +87,7 @@ export const CONTENTS = {
   <div class="skill"><b>core</b>: HTML, CSS, Node.js and PHP<br /></div>
   <div class="skill"><b>frameworks</b>: Express, React, Gatsby, NextJS, Django and Laravel<br /></div>
   <div class="skill"><b>database</b>: MongoDB, PostgreSQL, MySQL, and SQLite<br /></div>
-  I also have knowledge of basic shell scripting and my dotfiles can be found <a href="https://github.com/kavin25/.dotfiles" target="_blank">here</a>.
+  I also have knowledge of basic shell scripting and my dotfiles can be found <a href="https://github.com/kavinvalli/.dotfiles" target="_blank">here</a>.
 <br /><br />
   I also have experience with Mobile Development with Flutter.
   `,
