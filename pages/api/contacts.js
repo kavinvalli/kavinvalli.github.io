@@ -12,8 +12,8 @@ export default async function handler(req, res) {
     const contactMediums = [
       {
         medium: "github",
-        username: "kavin25",
-        link: "https://github.com/kavin25",
+        username: "kavinvalli",
+        link: "https://github.com/kavinvalli",
       },
       {
         medium: "email",
