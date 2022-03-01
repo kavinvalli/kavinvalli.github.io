@@ -87,7 +87,7 @@ export const CONTENTS = {
   skills: () => `
   I am experienced with Javascript, Typescript and Python and the web technologies dominating at the time:<br />
   <div class="skill"><b>core</b>: HTML, CSS, Node.js and PHP<br /></div>
-  <div class="skill"><b>frameworks</b>: Express, React, Gatsby, NextJS, Django and Laravel<br /></div>
+  <div class="skill"><b>frameworks</b>: Express, React, Gatsby, NextJS, RemixJS, Django and Laravel<br /></div>
   <div class="skill"><b>database</b>: MongoDB, PostgreSQL, MySQL, and SQLite<br /></div>
   I also have knowledge of basic shell scripting and my dotfiles can be found <a href="https://github.com/kavinvalli/.dotfiles" target="_blank">here</a>.
 <br /><br />
