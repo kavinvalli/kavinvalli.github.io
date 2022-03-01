@@ -74,7 +74,7 @@ export const CONTENTS = {
     "December 25, 2005"
   )} and I\'m a fullstack web developer
     <br/><br/>
-    I love coding in Javascript, Typescript and Python, and have worked with frameworks like ReactJS, VueJS, Express, and Django.
+    I love coding in Javascript, Typescript and Python, and have worked with frameworks like ReactJS, VueJS, Express, and Django. I currently use RemixJS, NextJS, Laravel, and NodeJS in a lot of my projects.
     <br /><br />
     I am a developer at <a href="https://tricycle.life" target="_blank">Tricycle</a> and <a href="https://exunclan.com" target="_blank">Exun Clan</a>, and a student at <a href="https://dpsrkp.net" target="_blank">Delhi Public School, R.K. Puram</a>
     <br />
