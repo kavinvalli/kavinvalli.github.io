@@ -49,7 +49,7 @@ export default async function handler(req, res) {
         description:
           "Rebranded CBSE Platform made using AdonisJS for CORE 2021. Creative Winners",
         stack: ["Javascript", "NodeJS", "Adonis"],
-        link: "https://cbse.kavin.me/",
+        link: "https://github.com/kavinvalli/core-cbse-rebrand-2021",
         image: "cbse.png",
       },
       {
