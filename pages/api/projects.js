@@ -37,6 +37,14 @@ export default async function handler(req, res) {
         image: "cognizer.png",
       },
       {
+        name: "Sudocrypt v11.0",
+        description:
+          "I developed the platform for Sudocrypt v11.0, a cryptic hunt organized by Exun Clan. It had over 1.5k participants and more than 50k attempts over the course of two days.",
+        stack: ["PHP", "Laravel", "Typescript", "ReactJS"],
+        link: "https://github.com/kavinvalli/sudocrypt-v11",
+        image: "sudocrypt.png",
+      },
+      {
         name: "Exun Notifications Platform (Cannot share code/link)",
         description:
           "Notification management and realtime notification platform built with NodeJS and Express. Used to send push notifications to the Exun 2020 App during the 25th International Tech Symposium, Exun 2020",
