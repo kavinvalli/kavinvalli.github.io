@@ -81,7 +81,7 @@ export const CONTENTS = {
     I am also the Chapter Officer at the <a href="https://new-delhi-space-society.github.io" target="_blank">New Delhi Space Society</a>, a chapter of the <a href="https://space.nss.org" target="_blank">National Space Society</a>
   `,
   education:
-    () => `I am a Grade 11 student at <a href="https://dpsrkp.net" target="_blank">Delhi Public School, R.K. Puram</a>
+    () => `I am a Grade 12 student at <a href="https://dpsrkp.net" target="_blank">Delhi Public School, R.K. Puram</a>
     <br />
     I am a member of <a href="https://enship-club.github.io" target="_blank">Enship</a> and <a href="https://exunclan.com">Exun Clan</a>, the Tech Club.`,
   skills: () => `
