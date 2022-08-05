@@ -29,6 +29,14 @@ export default async function handler(req, res) {
         largeImage: "ndss-lg.png",
       },
       {
+        name: "Wunderkind - DPS Goethe Quiz",
+        description:
+          "Helped in creating a platform (website) for a quiz conducted by Goethe Institut in collaboration DPS Society. The platform was used by over 9000 students in 2 iterations of the quiz and boasted a 99% availability rating. The platform was orchestrated at minimal cost to the operators and used cutting-edge web technology.",
+        stack: ["PHP", "Laravel", "Typescript", "ReactJS"],
+        link: "https://dpsgoethequiz.com",
+        image: "cognizer.png",
+      },
+      {
         name: "Cognizer",
         description:
           "A Chrome Extension that allows you to connect with people during and also soon after the conference or meet ends. Second Runner's up at Code Warriors soBig.s Hackathon 2021",
