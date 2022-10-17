@@ -11,13 +11,13 @@ export default async function handler(req, res) {
   if (req.method === "GET") {
     const projects = [
       {
-        name: "Enship Website",
+        name: "Liberty: Experience the ISS like never before.",
         description:
-          "I designed and developed the website for my school’s entrepreneurship club - Enship",
-        stack: ["Javascript", "NextJS"],
-        link: "https://enship-club.github.io/",
-        image: "enship.jpeg",
-        largeImage: "enship-lg.png",
+          "A browser based 3D visualisation of the International Space Station in Realtime which won us second place in the NASA Space Apps Regional Round among 90+ teams.",
+        stack: ["Typescript", "NextJS", "Rust", "WASM"],
+        link: "https://space-apps-eosin.vercel.app",
+        image: "ndss.png",
+        largeImage: "liberty-lg.png",
       },
       {
         name: "New Delhi Space Society Website",
