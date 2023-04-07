@@ -24,6 +24,10 @@ const COMMANDS = [
     description: "Visit my blog",
   },
   {
+    command: "youtube",
+    description: "Visit my youtube channel (@livecode247)",
+  },
+  {
     command:
       // 'clear <span style="color: var(--primary)">(Ctrl+L shortcut)</span>',
       "clear",
@@ -99,6 +103,10 @@ export const CONTENTS = {
     `<div class="help-command">sh: Unknown command: ${input}</div><div class="help-command">See \`help\` for info`,
   blog: () => {
     window.open("https://livecode247.com", "_blank");
+    return "";
+  },
+  youtube: () => {
+    window.open("https://youtube.com/@livecode247", "_blank");
     return "";
   },
 };
