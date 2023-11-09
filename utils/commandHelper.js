@@ -80,12 +80,12 @@ export const CONTENTS = {
     <br/><br/>
     I love coding in Javascript, Typescript and Python, and have worked with frameworks like ReactJS, VueJS, Express, and Django. I currently use NextJS, Laravel, and NodeJS in a lot of my projects.
     <br /><br />
-    I am a former President of <a href="https://exunclan.com" target="_blank">Exun Clan</a> ('22-23). I am an incoming freshman at <a href="https://uwaterloo.ca/content/home" target="_blank">University of Waterloo</a>.
+    I am a former President of <a href="https://exunclan.com" target="_blank">Exun Clan</a> ('22-23). I am a freshman at <a href="https://uwaterloo.ca/content/home" target="_blank">University of Waterloo</a>.
     <br />
     I am also the Chapter Officer at the <a href="https://new-delhi-space-society.github.io" target="_blank">New Delhi Space Society</a>, a chapter of the <a href="https://space.nss.org" target="_blank">National Space Society</a>. I am a core maintainer of <a href="https://typewind.vercel.app" target="_new">Typewind</a>
   `,
   education:
-    () => `I am a high school graduate from <a href="https://dpsrkp.net" target="_blank">Delhi Public School, R.K. Puram</a> and an incoming freshman at <a href="https://uwaterloo.ca/content/home" target="_blank">University of Waterloo</a>.`,
+    () => `I am a high school graduate from <a href="https://dpsrkp.net" target="_blank">Delhi Public School, R.K. Puram</a> and a freshman at <a href="https://uwaterloo.ca/content/home" target="_blank">University of Waterloo</a>.`,
   skills: () => `
   I am experienced with Javascript, Typescript and Python and the web technologies dominating at the time:<br />
   <div class="skill"><b>core</b>: HTML, CSS, Node.js and PHP<br /></div>
