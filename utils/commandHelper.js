@@ -16,6 +16,10 @@ const COMMANDS = [
     description: "My Tech Projects",
   },
   {
+    command: "resume",
+    description: "My Resume",
+  },
+  {
     command: "contact",
     description: "Contact Me",
   },
@@ -97,6 +101,10 @@ export const CONTENTS = {
   `,
   projects: getProjects,
   contact: getContacts,
+  resume: () => {
+    window.open("https://kavin.me/resume.pdf", "_blank");
+    return "";
+  },
   error: (input) =>
     `<div class="help-command">sh: Unknown command: ${input}</div><div class="help-command">See \`help\` for info`,
   blog: () => {
