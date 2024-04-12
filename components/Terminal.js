@@ -1,3 +1,5 @@
+"use client";
+
 import { useRef, useState } from "react";
 import { CONTENTS } from "../utils/commandHelper";
 import Command from "./Command";

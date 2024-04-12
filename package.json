@@ -9,10 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "airtable": "^0.12.2",
     "cors": "^2.8.5",
-    "next": "^12.1.0",
-    "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "next": "^14.2.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "eslint": "8.9.0",
