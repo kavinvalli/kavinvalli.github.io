@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "postinstall": "npx update-browserslist-db@latest"
   },
   "dependencies": {
     "airtable": "^0.12.2",
