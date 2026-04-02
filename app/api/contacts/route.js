@@ -11,14 +11,14 @@ export async function GET(request) {
       link: "mailto:mail@kavin.me",
     },
     {
-      medium: "facebook",
-      username: "kavin.valli.25",
-      link: "https://www.facebook.com/kavin.valli.25/",
-    },
-    {
       medium: "linkedin",
       username: "kavinvalli",
       link: "https://www.linkedin.com/in/kavinvalli/",
+    },
+    {
+      medium: "twitter",
+      username: "kavinvalli",
+      link: "https://twitter.com/kavinvalli",
     },
   ];
 

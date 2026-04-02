@@ -1,5 +1,7 @@
-The site is published [here](https://kavin.me)
+# kavin.me
 
-v0 edited this readme
+A terminal-based portfolio website for [Kavin Desi Valli](https://kavin.me).
 
-Hello World
+Built with Next.js. Type `help` to see available commands including `about`, `work`, `skills`, `projects`, `education`, `contact`, and more.
+
+The normal (non-terminal) version lives at [n.kavin.me](https://n.kavin.me) ([kavinvalli/normal-website](https://github.com/kavinvalli/normal-website)).
