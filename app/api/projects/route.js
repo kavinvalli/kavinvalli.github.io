@@ -1,70 +1,69 @@
 export async function GET(request) {
   const projects = [
     {
-      name: "Liberty: Experience the ISS like never before.",
+      name: "Helicone (YC W23)",
       description:
-        "A browser based 3D visualisation of the International Space Station in Realtime which won us second place in the NASA Space Apps Regional Round among 90+ teams.",
-      stack: ["Typescript", "NextJS", "Rust", "WASM"],
+        "Shipped 250+ merged PRs as a Software Engineer. Built the AI gateway (multi-provider proxy), LLM observability dashboard, multilingual SDKs, and production Next.js features for the open-source LLM observability platform.",
+      stack: ["TypeScript", "Next.js", "Cloudflare Workers", "PostgreSQL"],
+      link: "https://www.helicone.ai",
+      image: "exun.png",
+    },
+    {
+      name: "gh-repo-fzf",
+      description:
+        "A GitHub CLI extension for fuzzy-searching your repositories and performing actions on them. 45+ stars on GitHub.",
+      stack: ["Shell", "GitHub CLI"],
+      link: "https://github.com/kavinvalli/gh-repo-fzf",
+      image: "url.png",
+    },
+    {
+      name: "RITA - React, Inertia, TypeScript, Adonis",
+      description:
+        "A batteries-included starter for AdonisJS apps with React, Inertia.js, and TypeScript. 38+ stars.",
+      stack: ["TypeScript", "AdonisJS", "React", "Inertia.js"],
+      link: "https://github.com/kavinvalli/rita",
+      image: "cbse.png",
+    },
+    {
+      name: "Liberty: Experience the ISS",
+      description:
+        "A browser-based 3D visualization of the International Space Station in real-time. Won 2nd place at the NASA Space Apps Regional Round among 90+ teams.",
+      stack: ["TypeScript", "Next.js", "Rust", "WASM"],
       link: "https://space-apps-eosin.vercel.app",
       image: "ndss.png",
       largeImage: "liberty-lg.png",
     },
     {
-      name: "New Delhi Space Society Website",
-      description:
-        "I designed and developed New Delhi Space Society’s Website - A chapter of the National Space Society",
-      stack: ["Typescript", "NextJS"],
-      link: "https://new-delhi-space-society.github.io/",
-      image: "ndss.png",
-      largeImage: "ndss-lg.png",
-    },
-    {
-      name: "Wunderkind - DPS Goethe Quiz",
-      description:
-        "Helped in creating a platform (website) for a quiz conducted by Goethe Institut in collaboration DPS Society. The platform was used by over 9000 students in 2 iterations of the quiz and boasted a 99% availability rating. The platform was orchestrated at minimal cost to the operators and used cutting-edge web technology.",
-      stack: ["PHP", "Laravel", "Typescript", "ReactJS"],
-      link: "https://dpsgoethequiz.com",
-      image: "cognizer.png",
-    },
-    {
-      name: "Cognizer",
-      description:
-        "A Chrome Extension that allows you to connect with people during and also soon after the conference or meet ends. Second Runner's up at Code Warriors soBig.s Hackathon 2021",
-      stack: ["Javascript", "NodeJS", "Adonis", "Chrome Extension API"],
-      link: "https://cognizer.kavin.me/",
-      image: "cognizer.png",
-    },
-    {
       name: "Sudocrypt v11.0",
       description:
-        "I developed the platform for Sudocrypt v11.0, a cryptic hunt organized by Exun Clan. It had over 1.5k participants and more than 50k attempts over the course of two days.",
-      stack: ["PHP", "Laravel", "Typescript", "ReactJS"],
+        "Developed the platform for Sudocrypt v11.0, a cryptic hunt organized by Exun Clan. 1.5k+ participants and 50k+ attempts over two days. 43+ stars.",
+      stack: ["PHP", "Laravel", "TypeScript", "React"],
       link: "https://github.com/kavinvalli/sudocrypt-v11",
       image: "sudocrypt.png",
     },
     {
-      name: "CBSE Rebrand",
+      name: "Wunderkind - DPS Goethe Quiz",
       description:
-        "Rebranded CBSE Platform made using AdonisJS for CORE 2021. Creative Winners",
-      stack: ["Javascript", "NodeJS", "Adonis"],
-      link: "https://github.com/kavinvalli/core-cbse-rebrand-2021",
-      image: "cbse.png",
+        "Platform for a quiz by Goethe Institut and DPS Society. Used by 9,000+ students across 2 iterations with 99% availability.",
+      stack: ["PHP", "Laravel", "TypeScript", "React"],
+      link: "https://dpsgoethequiz.com",
+      image: "quiz.png",
     },
     {
-      name: "Discord Task Manager Bot",
+      name: "shadcn-table-v2",
       description:
-        "A Task Manager Bot you can add to your discord servers (created with the help of the Discord API)",
-      stack: ["Javascript", "NodeJS"],
-      link: "https://task-manager-bot.github.io",
-      image: "task-bot.png",
+        "A shadcn/ui table component with server-side sorting, filtering, and pagination. 7+ stars.",
+      stack: ["TypeScript", "Next.js", "shadcn/ui"],
+      link: "https://github.com/kavinvalli/shadcn-table-v2",
+      image: "url.png",
     },
     {
-      name: "Cricket VSCode Extension",
+      name: "Stripe Subscriptions Demo",
       description:
-        "A VSCode Extension to show Cricket News and LiveScores from inside the editor",
-      stack: ["Javascript"],
-      link: "https://github.com/kavin25/cricket-vscode-extension",
-      image: "cricket-vscode.png",
+        "A full-stack demo showcasing Stripe subscription integration with Next.js. 17+ stars.",
+      stack: ["TypeScript", "Next.js", "Stripe"],
+      link: "https://github.com/kavinvalli/stripe-subscriptions-demo",
+      image: "url.png",
     },
   ];
 
