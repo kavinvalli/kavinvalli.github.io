@@ -80,7 +80,7 @@ export const CONTENTS = {
       <div class="command">Type one of the above to view. For eg. <span style="color: var(--secondary)">about</span></div>`,
   about: () => `My name is Kavin Desi Valli. I'm a Computer Engineering student at the <a href="https://uwaterloo.ca/content/home" target="_blank">University of Waterloo</a> (CE '28) and a fullstack web developer.
     <br/><br/>
-    I ship developer tooling at <a href="https://www.helicone.ai" target="_blank">Helicone</a> (YC '23), covering LLM observability, multilingual SDKs, and production-grade Next.js features, after previously building embedded full stack systems at <a href="https://www.arcturusnetworks.com" target="_blank">Arcturus Networks</a>.
+    I'm currently interning at <a href="https://vercel.com" target="_blank">Vercel</a>. Previously, I shipped developer tooling at <a href="https://www.helicone.ai" target="_blank">Helicone</a> (YC '23), covering LLM observability, multilingual SDKs, and production-grade Next.js features, and built embedded full stack systems at <a href="https://www.arcturusnetworks.com" target="_blank">Arcturus Networks</a>.
     <br /><br />
     I used to run <a href="https://youtube.com/@livecode247" target="_blank">LiveCode247</a> (202K+ views, 8K watch hours), and served as President of <a href="https://exunclan.com" target="_blank">Exun Clan</a> ('22-23).
     <br />
