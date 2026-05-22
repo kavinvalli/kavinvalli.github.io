@@ -87,7 +87,7 @@ export const CONTENTS = {
     I am also the Chapter Officer at the <a href="https://new-delhi-space-society.github.io" target="_blank">New Delhi Space Society</a>, a chapter of the <a href="https://space.nss.org" target="_blank">National Space Society</a>. I am a core maintainer of <a href="https://typewind.vercel.app" target="_new">Typewind</a>
   `,
   education:
-    () => `I am a high school graduate from <a href="https://dpsrkp.net" target="_blank">Delhi Public School, R.K. Puram</a> and a student at <a href="https://uwaterloo.ca/content/home" target="_blank">University of Waterloo</a>.`,
+    () => `I am an alumnus of <a href="https://dpsrkp.net" target="_blank">Delhi Public School, R.K. Puram</a> and a student at <a href="https://uwaterloo.ca/content/home" target="_blank">University of Waterloo</a>.`,
   skills: () => `
   I am experienced with Javascript, Typescript and Python and the web technologies dominating at the time:<br />
   <div class="skill"><b>core</b>: HTML, CSS, Node.js and PHP<br /></div>
