@@ -7,3 +7,5 @@ Hello World
 hi from replicas!
 
 hi from kavin!
+
+This repo is partially managed by [Replicas](https://tryreplicas.com).
