@@ -1,10 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap");
 
 :root {
-  --text-color: #a9b1d6;
-  --primary: #bb9af7;
-  --secondary: #2ac3de;
-  --background-color: #000000;
+  --text-color: #1a1a1a;
+  --primary: #6b46c1;
+  --secondary: #0891b2;
+  --background-color: #ffffff;
 }
 
 html,
