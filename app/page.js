@@ -5,6 +5,7 @@ import styles from "./Home.module.css";
 export default function Home() {
   return (
     <div className={styles.container}>
+      <h1>hi kavin</h1>
       <h1>
         kavinvalli:$ <span className={styles.help}>type help to start</span>
       </h1>
