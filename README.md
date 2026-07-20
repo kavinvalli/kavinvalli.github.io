@@ -1,11 +1,23 @@
-The site is published [here](https://kavin.me)
+# kavin.me
 
-v0 edited this readme
+My personal site — [kavin.me](https://kavin.me). Next.js (App Router), deployed on Vercel.
 
-Hello World
+## Structure
 
-hi from replicas!
+- `app/page.js` — home (about, projects, recent writing)
+- `app/writing` — the blog: index + `[slug]` article pages
+- `content/writing/*.mdx` — articles (frontmatter: `title`, `description`, `date`, `draft`)
+- `lib/` — shared data (`projects`, `socials`) and the MDX loader
+- `app/s/[shortlink]/route.js` — Airtable-backed URL shortener
+- `app/api/*` — projects/contacts JSON endpoints
 
-hi from kavin!
+## Writing
 
-This repo is partially managed by [Replicas](https://tryreplicas.com).
+Drop an `.mdx` file in `content/writing/`. Newest `date` sorts first; `draft: true` hides it in production.
+
+## Develop
+
+```bash
+pnpm install
+pnpm dev
+```

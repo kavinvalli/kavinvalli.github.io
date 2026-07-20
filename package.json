@@ -9,14 +9,20 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "airtable": "^0.12.2",
-    "cors": "^2.8.5",
-    "next": "^14.2.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "geist": "^1.7.2",
+    "gray-matter": "^4.0.3",
+    "next": "^16.2.10",
+    "next-mdx-remote": "^6.0.0",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "remark-smartypants": "^3.0.2"
   },
   "devDependencies": {
-    "eslint": "8.9.0",
-    "eslint-config-next": "12.1.0"
+    "@types/node": "^26.1.1",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "eslint": "9.39.5",
+    "eslint-config-next": "16.2.10",
+    "typescript": "^5.9.3"
   }
 }
