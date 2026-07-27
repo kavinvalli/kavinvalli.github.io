@@ -22,5 +22,5 @@ pnpm install
 pnpm dev
 ```
 
-edited using replicas
+Edited using replicas
 
