@@ -85,7 +85,7 @@ export async function Now() {
   if (entries.length === 0) return null;
 
   return (
-    <section className="section">
+    <section className="section" data-reveal>
       <div className={`${s.sectionHead} breakout`}>
         <p className={s.sectionLabel}>Now</p>
         <span className={s.sectionAll}>updated {updatedLabel(nowUpdated)}</span>

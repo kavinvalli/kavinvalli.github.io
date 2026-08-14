@@ -25,7 +25,7 @@ export default function WritingIndex() {
         {posts.length === 0 ? (
           <p className={s.rowDesc}>Nothing here yet — check back soon.</p>
         ) : (
-          <div className={`${s.rowGrid} breakout`}>
+          <div className={`${s.rowGrid} breakout`} data-reveal>
             {posts.map((post) => (
               <Link
                 key={post.slug}
@@ -46,11 +46,11 @@ export default function WritingIndex() {
       </section>
 
       {mentions.length > 0 && (
-        <section className="section">
+        <section className="section" data-reveal>
           <div className={s.sectionHead}>
             <p className={s.sectionLabel}>Elsewhere</p>
           </div>
-          <div className={`${s.rowGrid} breakout`}>
+          <div className={`${s.rowGrid} breakout`} data-reveal>
             {mentions.map((mention) => (
               <MentionRow key={mention.link} mention={mention} />
             ))}

@@ -57,7 +57,11 @@ export default function Home() {
         .
       </p>
 
-      <div className="mt-7 flex flex-wrap gap-x-[1.1rem] gap-y-[0.4rem]">
+      <div
+        className="mt-7 flex flex-wrap gap-x-[1.1rem] gap-y-[0.4rem]"
+        data-reveal
+        data-stagger
+      >
         {socials.map((social) => (
           <a
             key={social.medium}

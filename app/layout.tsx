@@ -3,8 +3,16 @@ import type { ReactNode } from "react";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import { Instrument_Serif } from "next/font/google";
+import { CursorGlow } from "./components/cursor-glow";
 import { Nav } from "./components/nav";
+import { Reveal } from "./components/reveal";
 import "./globals.css";
+
+// Runs before the body paints, so scroll-reveal targets start hidden without a
+// flash of the final layout first. Gated on the motion preference here — the
+// CSS never hides anything unless this attribute lands, which also means a
+// visitor with JS off sees the whole page rather than a blank column.
+const armMotion = `try{if(!matchMedia("(prefers-reduced-motion: reduce)").matches)document.documentElement.setAttribute("data-motion","")}catch(e){}`;
 
 // Display face for headings — mono stays for metadata, sans for body copy.
 const serif = Instrument_Serif({
@@ -45,13 +53,20 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
+    // suppressHydrationWarning: the inline script below adds data-motion to
+    // <html> before React hydrates, which is the whole point — the attribute
+    // has to be in place for the first paint, so it can't match the server HTML
     <html
       lang="en"
+      suppressHydrationWarning
       className={`${GeistSans.variable} ${GeistMono.variable} ${serif.variable}`}
     >
       <body>
+        <script dangerouslySetInnerHTML={{ __html: armMotion }} />
+        <CursorGlow />
         <Nav />
         {children}
+        <Reveal />
       </body>
     </html>
   );

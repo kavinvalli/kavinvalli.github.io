@@ -60,6 +60,10 @@ export function PhotoStrip({
         }
         role="group"
         aria-label={`Photos from ${label}`}
+        // the grid tiles land one by one; a strip scrolls, so most of it is
+        // off-screen and there's nothing to stagger
+        data-reveal={layout === "grid" ? "" : undefined}
+        data-stagger={layout === "grid" ? "" : undefined}
       >
         {images.map((src, i) => (
           <button
@@ -79,7 +83,7 @@ export function PhotoStrip({
               fill
               sizes={layout === "grid" ? "(max-width: 640px) 50vw, 340px" : "208px"}
               onLoad={() => setLoaded((prev) => ({ ...prev, [src]: true }))}
-              className="object-cover grayscale contrast-110 transition duration-300 hoverable:group-hover/photo:grayscale-0"
+              className="object-cover grayscale contrast-110 transition duration-500 ease-out hoverable:group-hover/photo:scale-[1.04] hoverable:group-hover/photo:grayscale-0"
             />
             <span className="absolute inset-0 bg-accent/45 mix-blend-color transition-opacity duration-300 hoverable:group-hover/photo:opacity-0" />
           </button>

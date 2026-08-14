@@ -6,13 +6,14 @@ export function Experience() {
   if (experience.length === 0) return null;
 
   return (
-    <section className="section">
+    <section className="section" data-reveal>
       <div className={`${s.sectionHead} breakout`}>
         <p className={s.sectionLabel}>Experience</p>
       </div>
 
       {/* the rail: a dashed line down the left, with a marker per role */}
-      <ol className="breakout border-l border-dashed border-line">
+      {/* roles land one after another down the rail */}
+      <ol className="breakout border-l border-dashed border-line" data-reveal data-stagger>
         {experience.map((job) => (
           <li
             key={job.company}

@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import { getContributions, monthLabels } from "../../lib/github";
 import * as s from "./styles";
 
@@ -27,7 +28,7 @@ export async function Contributions({ login }: { login: string }) {
   const labels = monthLabels(data.weeks);
 
   return (
-    <section className="section">
+    <section className="section" data-reveal>
       <div className={s.sectionHead}>
         <p className={s.sectionLabel}>Contributions</p>
         <a
@@ -61,28 +62,39 @@ export async function Contributions({ login }: { login: string }) {
             ))}
           </div>
 
+          {/* a div per week rather than one flat grid of cells: it renders
+              identically, and it gives the fill-in animation something to
+              stagger across without an inline delay on all 371 cells */}
           <div
             role="img"
             aria-label={`${data.total} GitHub contributions in the last year`}
-            className="col-start-2 row-start-2 grid auto-cols-[var(--gh-cell)] grid-flow-col grid-rows-[repeat(7,var(--gh-cell))] gap-[var(--gh-gap)]"
+            className="col-start-2 row-start-2 grid auto-cols-[var(--gh-cell)] grid-flow-col gap-[var(--gh-gap)]"
+            data-reveal
+            data-sweep
           >
-            {data.weeks.map((week, w) =>
-              week.map((day, d) =>
-                day.date ? (
-                  <span
-                    key={`${w}-${d}`}
-                    className={cell}
-                    data-level={day.level}
-                    title={formatDay(day.date, day.count)}
-                  />
-                ) : (
-                  <span
-                    key={`${w}-${d}`}
-                    className="w-[var(--gh-cell)] h-[var(--gh-cell)]"
-                  />
-                )
-              )
-            )}
+            {data.weeks.map((week, w) => (
+              <div
+                key={w}
+                style={{ "--i": w } as CSSProperties}
+                className="grid grid-rows-[repeat(7,var(--gh-cell))] gap-[var(--gh-gap)]"
+              >
+                {week.map((day, d) =>
+                  day.date ? (
+                    <span
+                      key={`${w}-${d}`}
+                      className={cell}
+                      data-level={day.level}
+                      title={formatDay(day.date, day.count)}
+                    />
+                  ) : (
+                    <span
+                      key={`${w}-${d}`}
+                      className="w-[var(--gh-cell)] h-[var(--gh-cell)]"
+                    />
+                  )
+                )}
+              </div>
+            ))}
           </div>
         </div>
       </div>

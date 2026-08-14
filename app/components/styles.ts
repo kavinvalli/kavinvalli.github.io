@@ -20,8 +20,11 @@ export const sectionAll =
 export const rowGrid =
   "grid grid-cols-1 border-t border-l border-dashed border-line sm:grid-cols-2";
 
+// An amber edge grows down the left on hover — the flat look leaves no shadow
+// or lift to signal a target, so the rule does it instead.
 export const row =
-  "flex flex-col border-r border-b border-dashed border-line px-[1.35rem] py-[1.15rem] transition-colors hover:bg-card";
+  "relative flex flex-col border-r border-b border-dashed border-line px-[1.35rem] py-[1.15rem] transition-colors hover:bg-card " +
+  "before:absolute before:inset-y-0 before:left-0 before:w-px before:origin-top before:scale-y-0 before:bg-accent before:transition-transform before:duration-300 before:ease-out hoverable:hover:before:scale-y-100";
 
 export const rowHead = "flex items-baseline justify-between gap-4";
 

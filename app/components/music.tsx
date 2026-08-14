@@ -4,7 +4,7 @@ import * as s from "./styles";
 
 export function Music() {
   return (
-    <section className="section">
+    <section className="section" data-reveal>
       <div className={`${s.sectionHead} breakout`}>
         <p className={s.sectionLabel}>Music</p>
         <p className="font-mono text-[0.7rem] lowercase whitespace-nowrap text-faint">

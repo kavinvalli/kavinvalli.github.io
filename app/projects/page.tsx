@@ -18,7 +18,7 @@ export default function ProjectsIndex() {
       </p>
 
       <section className="section">
-        <div className={`${s.rowGrid} breakout`}>
+        <div className={`${s.rowGrid} breakout`} data-reveal>
           {projects.map((project) => (
             <ProjectRow key={project.name} project={project} />
           ))}

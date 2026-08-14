@@ -216,6 +216,173 @@
   }
 }
 
+/* Motion.
+
+   These rules sit outside every @layer on purpose: unlayered CSS outranks
+   layered CSS, so a `transition-colors` utility on a revealing element can't
+   quietly replace the transition that makes it appear.
+
+   Everything hidden-until-seen hangs off `html[data-motion]`, which an inline
+   script sets before first paint and only when the visitor hasn't asked for
+   less motion. Without JS — or with reduced motion — the attribute never
+   lands, and nothing is ever parked at opacity: 0 with no way back. */
+
+@keyframes page-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+/* `to` is spelled out because the underlying opacity is 0 — an implicit `to`
+   would resolve to that and animate the columns from invisible to invisible. */
+@keyframes cell-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes scroll-progress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* Route change. Each page renders its own .page, so navigating remounts this
+   element and replays the animation — no transition wrapper needed. */
+.page {
+  animation: page-in 0.5s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+
+html[data-motion] [data-reveal]:not([data-stagger], [data-sweep]),
+html[data-motion] [data-stagger] > *,
+html[data-motion] [data-sweep] > * {
+  opacity: 0;
+}
+
+html[data-motion] [data-reveal]:not([data-stagger], [data-sweep]),
+html[data-motion] [data-stagger] > * {
+  transform: translateY(0.7rem);
+  transition:
+    opacity 0.65s cubic-bezier(0.22, 0.61, 0.36, 1),
+    transform 0.65s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+html[data-motion] [data-reveal][data-revealed]:not([data-stagger]),
+html[data-motion] [data-stagger][data-revealed] > * {
+  opacity: 1;
+  transform: none;
+}
+
+/* Children cascade instead of arriving as a block. Ten steps covers the
+   longest list on the site; anything past it shares the last delay. */
+html[data-motion] [data-stagger] > *:nth-child(n + 2) {
+  transition-delay: 60ms;
+}
+html[data-motion] [data-stagger] > *:nth-child(n + 3) {
+  transition-delay: 120ms;
+}
+html[data-motion] [data-stagger] > *:nth-child(n + 4) {
+  transition-delay: 180ms;
+}
+html[data-motion] [data-stagger] > *:nth-child(n + 5) {
+  transition-delay: 240ms;
+}
+html[data-motion] [data-stagger] > *:nth-child(n + 6) {
+  transition-delay: 300ms;
+}
+html[data-motion] [data-stagger] > *:nth-child(n + 7) {
+  transition-delay: 360ms;
+}
+html[data-motion] [data-stagger] > *:nth-child(n + 8) {
+  transition-delay: 420ms;
+}
+html[data-motion] [data-stagger] > *:nth-child(n + 9) {
+  transition-delay: 480ms;
+}
+
+/* The contribution chart fills left to right, a week per step — the delay
+   comes from --i, set per column, because 53 nth-child rules is absurd. */
+html[data-motion] [data-sweep][data-revealed] > * {
+  animation: cell-in 0.4s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+  animation-delay: calc(var(--i, 0) * 9ms);
+}
+
+/* Light following the pointer. z-index: -1 puts it under the text but still
+   over the page background — body's background propagates to the canvas, so
+   it paints behind negative-z children rather than covering them.
+
+   Sized and offset in CSS so the script only ever writes a transform. */
+.cursor-glow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 38rem;
+  height: 38rem;
+  margin: -19rem 0 0 -19rem;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  background: radial-gradient(
+    circle,
+    --alpha(var(--color-accent) / 12%),
+    transparent 63%
+  );
+  filter: blur(50px);
+  will-change: transform;
+}
+
+@media (hover: none), (prefers-reduced-motion: reduce) {
+  .cursor-glow {
+    display: none;
+  }
+}
+
+/* The photo viewer. A modal <dialog> can't be transitioned in without
+   @starting-style, but it can be animated — and it only ever opens, so a
+   keyframe on [open] is all it needs. */
+dialog[open] {
+  animation: dialog-in 0.22s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+
+dialog[open]::backdrop {
+  animation: backdrop-in 0.22s ease-out both;
+}
+
+@keyframes dialog-in {
+  from {
+    opacity: 0;
+    transform: scale(0.985);
+  }
+}
+
+@keyframes backdrop-in {
+  from {
+    opacity: 0;
+  }
+}
+
+/* Reading position, drawn straight from the scroll offset. No JS, no scroll
+   listener — and in browsers without scroll-driven animations the bar simply
+   stays at scaleX(0) and is never seen. */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: scroll()) {
+    .scroll-progress {
+      animation: scroll-progress linear both;
+      animation-timeline: scroll(root block);
+    }
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
