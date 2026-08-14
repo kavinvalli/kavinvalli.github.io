@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { MentionRow } from "../components/rows";
+import { mentions } from "../../lib/mentions";
 import { getAllPosts, formatDate } from "../../lib/writing";
 
 export const metadata: Metadata = {
   title: "Writing",
-  description: "Essays and notes by Kavin Desi Valli.",
+  description:
+    "Essays and notes by Kavin Desi Valli, and where his work has been written about.",
 };
 
 export default function WritingIndex() {
@@ -12,10 +15,6 @@ export default function WritingIndex() {
 
   return (
     <main className="page">
-      <Link className="back" href="/">
-        ← Home
-      </Link>
-
       <h1 className="name">Writing</h1>
       <p className="tagline">Essays, notes, and things I&apos;m figuring out.</p>
 
@@ -33,6 +32,15 @@ export default function WritingIndex() {
           </Link>
         ))}
       </section>
+
+      {mentions.length > 0 && (
+        <section className="section">
+          <p className="sectionLabel">Elsewhere</p>
+          {mentions.map((mention) => (
+            <MentionRow key={mention.link} mention={mention} />
+          ))}
+        </section>
+      )}
 
       <footer className="footer">
         <span>© {new Date().getFullYear()} Kavin Desi Valli</span>

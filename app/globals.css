@@ -8,7 +8,10 @@
   --accent: #52a8ff;
   --accent-hover: #8fc4ff;
   --card: #0a0a0a;
-  --radius: 10px;
+  --radius: 0px;
+  /* contribution grid — shared by the chart and its legend, which are siblings */
+  --gh-cell: 10px;
+  --gh-gap: 3px;
 }
 
 * {
@@ -61,7 +64,6 @@ a:hover {
 :focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
-  border-radius: 4px;
 }
 
 code {
@@ -70,8 +72,39 @@ code {
   font-size: 0.875em;
   background: var(--card);
   border: 1px solid var(--border);
-  border-radius: 6px;
   padding: 0.1em 0.4em;
+}
+
+/* ---------- nav ---------- */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: color-mix(in srgb, var(--background) 78%, transparent);
+  backdrop-filter: saturate(180%) blur(12px);
+  -webkit-backdrop-filter: saturate(180%) blur(12px);
+}
+
+.navInner {
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 1.1rem 1.5rem;
+  display: flex;
+  gap: 1.4rem;
+}
+
+.navLink {
+  font-size: 0.875rem;
+  color: var(--faint);
+}
+
+.navLink:hover {
+  color: var(--foreground);
+}
+
+.navLinkActive {
+  color: var(--foreground);
 }
 
 /* ---------- layout ---------- */
@@ -79,11 +112,18 @@ code {
   width: 100%;
   max-width: 760px;
   margin: 0 auto;
-  padding: clamp(3rem, 9vh, 5.5rem) 1.5rem 4rem;
+  padding: clamp(1.5rem, 5vh, 3rem) 1.5rem 4rem;
 }
 
 .section {
   margin-top: 2.75rem;
+}
+
+.sectionHead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
 }
 
 .sectionLabel {
@@ -93,6 +133,28 @@ code {
   text-transform: uppercase;
   color: var(--faint);
   margin-bottom: 0.85rem;
+}
+
+.sectionAll {
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+
+.sectionAll:hover {
+  color: var(--foreground);
+}
+
+.sectionAll .arrow {
+  transition: transform 0.15s ease;
+  display: inline-block;
+}
+
+.sectionAll:hover .arrow {
+  transform: translateX(2px);
+  color: var(--accent);
 }
 
 /* ---------- hero ---------- */
@@ -204,6 +266,16 @@ code {
   font-size: 0.875rem;
 }
 
+.rowQuote {
+  margin-top: 0.5rem;
+  padding-left: 0.75rem;
+  border-left: 1px solid var(--border-hover);
+  color: var(--foreground);
+  font-size: 0.875rem;
+  font-style: italic;
+  text-wrap: pretty;
+}
+
 .tags {
   display: flex;
   flex-wrap: wrap;
@@ -216,8 +288,115 @@ code {
   font-size: 0.7rem;
   color: var(--faint);
   border: 1px solid var(--border);
-  border-radius: 5px;
   padding: 0.05rem 0.4rem;
+}
+
+/* ---------- github contributions ---------- */
+.ghScroll {
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+}
+
+.ghScroll::-webkit-scrollbar {
+  display: none;
+}
+
+.ghChart {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.3rem 0.5rem;
+  min-width: min-content;
+}
+
+/* month row sits above the grid, in the right-hand column */
+.ghMonths {
+  grid-column: 2;
+  grid-row: 1;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: var(--gh-cell);
+  gap: var(--gh-gap);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.65rem;
+  color: var(--faint);
+  line-height: 1;
+}
+
+/* labels overflow their 10px column rather than stretching the grid */
+.ghMonths span {
+  overflow: visible;
+  white-space: nowrap;
+}
+
+.ghDays {
+  grid-column: 1;
+  grid-row: 2;
+  display: grid;
+  grid-template-rows: repeat(7, var(--gh-cell));
+  gap: var(--gh-gap);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.65rem;
+  color: var(--faint);
+  line-height: var(--gh-cell);
+  text-align: right;
+}
+
+.ghGrid {
+  grid-column: 2;
+  grid-row: 2;
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-rows: repeat(7, var(--gh-cell));
+  grid-auto-columns: var(--gh-cell);
+  gap: var(--gh-gap);
+}
+
+.ghCell {
+  width: var(--gh-cell);
+  height: var(--gh-cell);
+  background: var(--card);
+  outline: 1px solid rgba(255, 255, 255, 0.04);
+  outline-offset: -1px;
+}
+
+.ghCell[data-level="1"] {
+  background: rgba(82, 168, 255, 0.24);
+}
+
+.ghCell[data-level="2"] {
+  background: rgba(82, 168, 255, 0.45);
+}
+
+.ghCell[data-level="3"] {
+  background: rgba(82, 168, 255, 0.68);
+}
+
+.ghCell[data-level="4"] {
+  background: rgba(82, 168, 255, 0.95);
+}
+
+.ghCellEmpty {
+  background: transparent;
+  outline: none;
+}
+
+.ghLegend {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-top: 0.6rem;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.65rem;
+  color: var(--faint);
+}
+
+.ghLegend span:first-child {
+  margin-right: 0.15rem;
+}
+
+.ghLegend span:last-child {
+  margin-left: 0.15rem;
 }
 
 /* ---------- footer ---------- */

@@ -47,10 +47,6 @@ export default async function Article({
 
   return (
     <main className="page">
-      <Link className="back" href="/writing">
-        ← Writing
-      </Link>
-
       <header className="articleHeader">
         <h1 className="articleTitle">{post.title}</h1>
         {post.date && <p className="articleDate">{formatDate(post.date)}</p>}

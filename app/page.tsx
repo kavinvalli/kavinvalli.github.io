@@ -1,11 +1,13 @@
-import Link from "next/link";
-import { projects } from "../lib/projects";
+import { Contributions } from "./components/contributions";
 import { socials } from "../lib/socials";
-import { getAllPosts, formatDate } from "../lib/writing";
 
+// Rebuilt at most hourly — the only dynamic thing here is the contribution
+// graph, and it's fed by an hourly-revalidated fetch.
+export const revalidate = 3600;
+
+// Intro only — writing, mentions, and projects live behind the nav.
+// Stats (GitHub activity, now playing) will land below the links.
 export default function Home() {
-  const posts = getAllPosts().slice(0, 4);
-
   return (
     <main className="page">
       <h1 className="name">Kavin Desi Valli</h1>
@@ -75,54 +77,10 @@ export default function Home() {
         </a>
       </div>
 
-      {posts.length > 0 && (
-        <section className="section">
-          <p className="sectionLabel">Writing</p>
-          {posts.map((post) => (
-            <Link
-              key={post.slug}
-              className="row"
-              href={`/writing/${post.slug}`}
-            >
-              <div className="rowHead">
-                <span className="rowTitle">{post.title}</span>
-                <span className="rowMeta">{formatDate(post.date)}</span>
-              </div>
-              {post.description && <p className="rowDesc">{post.description}</p>}
-            </Link>
-          ))}
-        </section>
-      )}
-
-      <section className="section">
-        <p className="sectionLabel">Projects</p>
-        {projects.map((project) => (
-          <a
-            key={project.name}
-            className="row"
-            href={project.link}
-            target="_blank"
-            rel="noreferrer"
-          >
-            <div className="rowHead">
-              <span className="rowTitle">{project.name}</span>
-              <span className="rowMeta">↗</span>
-            </div>
-            <p className="rowDesc">{project.description}</p>
-            <div className="tags">
-              {project.stack.map((tech) => (
-                <span key={tech} className="tag">
-                  {tech}
-                </span>
-              ))}
-            </div>
-          </a>
-        ))}
-      </section>
+      <Contributions login="kavinvalli" />
 
       <footer className="footer">
         <span>© {new Date().getFullYear()} Kavin Desi Valli</span>
-        <span>Built with Next.js</span>
       </footer>
     </main>
   );
