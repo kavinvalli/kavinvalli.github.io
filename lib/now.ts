@@ -28,7 +28,7 @@ export const now: NowEntry[] = [
     label: "reading",
     value: "The Guest List",
     href: "https://www.goodreads.com/en/book/show/52656911-the-guest-list",
-    note: "the same book for about six months now — i almost only read when i travel 😭",
+    note: "the same book for about six months now — i almost only read when i travel 😭 (it's a great book though!)",
   },
   {
     label: "studying",
