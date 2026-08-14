@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+/* Tailwind wraps `hover:` in @media (hover: hover) but NOT `group-hover:`.
+   Hover cards need the guard, or a tap on a touch device leaves the card
+   stuck open behind a sticky :hover. */
+@custom-variant hoverable (@media (hover: hover));
+
 @theme {
   --color-background: #000000;
   --color-foreground: #ededed;
@@ -23,10 +28,10 @@
   --width-wide: 1020px;
   --spacing-gutter: 1.25rem;
 
-  /* Contribution grid. 15px is the largest square that fits 53 weeks inside
-     the breakout track — 16px overflows and reintroduces a scrollbar. */
-  --gh-cell: 15px;
-  --gh-gap: 3px;
+  /* Contribution grid. A full year sits in the 620px text column at 9px cells
+     with a 2px gap (581px); 9/3 or 10/3 overflow it. */
+  --gh-cell: 9px;
+  --gh-gap: 2px;
 }
 
 @layer base {

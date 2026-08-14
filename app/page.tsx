@@ -1,14 +1,10 @@
 import { Contributions } from "./components/contributions";
+import { Now } from "./components/now";
+import { PreviewLink } from "./components/preview-link";
 import * as s from "./components/styles";
 import { socials } from "../lib/socials";
 
-// Rebuilt at most hourly — the only dynamic thing here is the contribution
-// graph, and it's fed by an hourly-revalidated fetch.
-export const revalidate = 3600;
-
-const proseLink =
-  "border-b border-line-strong pb-px text-foreground transition-colors hover:border-accent hover:text-accent-hover";
-
+// The contribution fetch revalidates hourly, which makes this page ISR too.
 const socialLink =
   "group inline-flex items-center gap-[0.35rem] font-mono text-[0.78rem] lowercase text-muted transition-colors hover:text-foreground";
 
@@ -25,78 +21,38 @@ export default function Home() {
 
       <p className="mt-8 text-[0.95rem] leading-[1.8] text-pretty text-muted">
         I&apos;m a Computer Engineering student at the{" "}
-        <a
-          className={proseLink}
-          href="https://uwaterloo.ca"
-          target="_blank"
-          rel="noreferrer"
-        >
+        <PreviewLink href="https://uwaterloo.ca">
           University of Waterloo
-        </a>{" "}
+        </PreviewLink>{" "}
         and a software engineer, currently at{" "}
-        <a
-          className={proseLink}
-          href="https://tryreplicas.com"
-          target="_blank"
-          rel="noreferrer"
-        >
+        <PreviewLink href="https://tryreplicas.com">
           Replicas
-        </a>{" "}
+        </PreviewLink>{" "}
         (YC P26). Before that, I worked on the{" "}
-        <a
-          className={proseLink}
-          href="https://v0.app"
-          target="_blank"
-          rel="noreferrer"
-        >
+        <PreviewLink href="https://v0.app">
           v0
-        </a>{" "}
+        </PreviewLink>{" "}
         team at{" "}
-        <a
-          className={proseLink}
-          href="https://vercel.com"
-          target="_blank"
-          rel="noreferrer"
-        >
+        <PreviewLink href="https://vercel.com">
           Vercel
-        </a>
+        </PreviewLink>
         , built developer tooling at{" "}
-        <a
-          className={proseLink}
-          href="https://helicone.ai"
-          target="_blank"
-          rel="noreferrer"
-        >
+        <PreviewLink href="https://helicone.ai">
           Helicone
-        </a>{" "}
+        </PreviewLink>{" "}
         (YC W23) — LLM observability, multilingual SDKs — and embedded
         full-stack systems at{" "}
-        <a
-          className={proseLink}
-          href="https://www.arcturusnetworks.com"
-          target="_blank"
-          rel="noreferrer"
-        >
+        <PreviewLink href="https://www.arcturusnetworks.com">
           Arcturus Networks
-        </a>
+        </PreviewLink>
         . I ran{" "}
-        <a
-          className={proseLink}
-          href="https://youtube.com/@livecode247"
-          target="_blank"
-          rel="noreferrer"
-        >
+        <PreviewLink href="https://youtube.com/@livecode247">
           LiveCode247
-        </a>{" "}
+        </PreviewLink>{" "}
         (200K+ views) and help maintain{" "}
-        <a
-          className={proseLink}
-          href="https://typewind.vercel.app"
-          target="_blank"
-          rel="noreferrer"
-        >
+        <PreviewLink href="https://typewind.vercel.app">
           Typewind
-        </a>
+        </PreviewLink>
         .
       </p>
 
@@ -123,6 +79,8 @@ export default function Home() {
           <span className={arrow}>↗</span>
         </a>
       </div>
+
+      <Now />
 
       <Contributions login="kavinvalli" />
 
