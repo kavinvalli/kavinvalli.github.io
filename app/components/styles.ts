@@ -21,7 +21,7 @@ export const rowGrid =
   "grid grid-cols-1 border-t border-l border-dashed border-line sm:grid-cols-2";
 
 export const row =
-  "block border-r border-b border-dashed border-line px-[1.35rem] py-[1.15rem] transition-colors hover:bg-card";
+  "flex flex-col border-r border-b border-dashed border-line px-[1.35rem] py-[1.15rem] transition-colors hover:bg-card";
 
 export const rowHead = "flex items-baseline justify-between gap-4";
 
@@ -36,7 +36,7 @@ export const rowDesc = "mt-[0.45rem] text-[0.85rem] leading-relaxed text-muted";
 export const rowQuote =
   "mt-[0.6rem] border-l border-accent pl-[0.8rem] text-[0.85rem] italic text-pretty text-foreground";
 
-export const tags = "mt-3 flex flex-wrap gap-[0.65rem]";
+export const tags = "mt-auto flex flex-wrap gap-[0.65rem] pt-3";
 
 export const tag = "font-mono text-[0.68rem] lowercase text-accent/55";
 

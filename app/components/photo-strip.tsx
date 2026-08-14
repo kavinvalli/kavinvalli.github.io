@@ -8,10 +8,13 @@ import { useCallback, useEffect, useRef, useState } from "react";
 // native <dialog>, which brings Esc-to-close and focus trapping with it.
 export function PhotoStrip({
   images,
-  company,
+  label,
+  layout = "strip",
 }: {
   images: string[];
-  company: string;
+  label: string;
+  // "strip" scrolls horizontally; "grid" lays every photo out at once
+  layout?: "strip" | "grid";
 }) {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const [index, setIndex] = useState<number | null>(null);
@@ -50,25 +53,31 @@ export function PhotoStrip({
   return (
     <>
       <div
-        className="mt-4 -mb-1 flex snap-x snap-mandatory gap-2 overflow-x-auto overscroll-x-contain pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        className={
+          layout === "grid"
+            ? "grid grid-cols-2 gap-2 sm:grid-cols-3"
+            : "mt-4 -mb-1 flex snap-x snap-mandatory gap-2 overflow-x-auto overscroll-x-contain pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        }
         role="group"
-        aria-label={`Photos from ${company}`}
+        aria-label={`Photos from ${label}`}
       >
         {images.map((src, i) => (
           <button
             key={src}
             type="button"
             onClick={() => open(i)}
-            aria-label={`Open photo ${i + 1} of ${images.length} from ${company}`}
-            className={`group/photo relative block h-36 w-52 shrink-0 cursor-zoom-in snap-start overflow-hidden bg-card ${
-              loaded[src] ? "" : "animate-pulse"
-            }`}
+            aria-label={`Open photo ${i + 1} of ${images.length} from ${label}`}
+            className={`group/photo relative block cursor-zoom-in overflow-hidden bg-card ${
+              layout === "grid"
+                ? "aspect-square w-full"
+                : "h-36 w-52 shrink-0 snap-start"
+            } ${loaded[src] ? "" : "animate-pulse"}`}
           >
             <Image
               src={src}
               alt=""
               fill
-              sizes="208px"
+              sizes={layout === "grid" ? "(max-width: 640px) 50vw, 340px" : "208px"}
               onLoad={() => setLoaded((prev) => ({ ...prev, [src]: true }))}
               className="object-cover grayscale contrast-110 transition duration-300 hoverable:group-hover/photo:grayscale-0"
             />
@@ -101,7 +110,7 @@ export function PhotoStrip({
             <div className="relative aspect-[13/9] max-h-[78vh] w-[min(88vw,900px)]">
               <Image
                 src={images[index]}
-                alt={`${company}, photo ${index + 1} of ${images.length}`}
+                alt={`${label}, photo ${index + 1} of ${images.length}`}
                 fill
                 priority
                 sizes="(max-width: 900px) 88vw, 900px"

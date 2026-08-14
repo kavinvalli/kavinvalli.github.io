@@ -48,7 +48,7 @@ export function Experience() {
             <p className={s.rowDesc}>{job.description}</p>
 
             {job.images && job.images.length > 0 && (
-              <PhotoStrip images={job.images} company={job.company} />
+              <PhotoStrip images={job.images} label={job.company} />
             )}
           </li>
         ))}
