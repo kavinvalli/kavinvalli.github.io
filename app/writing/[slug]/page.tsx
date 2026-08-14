@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import remarkSmartypants from "remark-smartypants";
+import * as s from "../../components/styles";
 import { getAllPosts, getPost, formatDate } from "../../../lib/writing";
 
 type Params = { slug: string };
@@ -47,16 +48,22 @@ export default async function Article({
 
   return (
     <main className="page">
-      <header className="articleHeader">
-        <h1 className="articleTitle">{post.title}</h1>
-        {post.date && <p className="articleDate">{formatDate(post.date)}</p>}
+      <header className="mb-10">
+        <h1 className="font-serif text-[clamp(2rem,5.5vw,2.8rem)] font-normal leading-[1.08] tracking-[-0.02em] text-balance">
+          {post.title}
+        </h1>
+        {post.date && (
+          <p className="mt-3 font-mono text-[0.72rem] lowercase tabular-nums text-faint">
+            {formatDate(post.date)}
+          </p>
+        )}
       </header>
 
       <article className="prose">
         <MDXRemote source={post.content} options={mdxOptions} />
       </article>
 
-      <footer className="footer">
+      <footer className={s.footer}>
         <Link href="/writing">← All writing</Link>
         <Link href="/">kavin.me</Link>
       </footer>

@@ -1,600 +1,216 @@
-:root {
-  --background: #000000;
-  --foreground: #ededed;
-  --muted: #a1a1a1;
-  --faint: #707070;
-  --border: #1f1f1f;
-  --border-hover: #333333;
-  --accent: #d98a4f;
-  --accent-hover: #edb184;
-  --card: #0a0a0a;
-  --radius: 0px;
+@import "tailwindcss";
 
-  --serif: var(--font-serif), "Iowan Old Style", Georgia, serif;
-  --mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+@theme {
+  --color-background: #000000;
+  --color-foreground: #ededed;
+  --color-muted: #a1a1a1;
+  --color-faint: #707070;
+  --color-line: #1f1f1f;
+  --color-line-strong: #333333;
+  --color-accent: #d98a4f;
+  --color-accent-hover: #edb184;
+  --color-card: #0a0a0a;
+
+  --font-sans: var(--font-geist-sans), -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo,
+    monospace;
+  --font-serif: var(--font-instrument-serif), "Iowan Old Style", Georgia, serif;
 
   /* two column widths on one centre axis: prose reads narrow, grids break out */
-  --w-text: 620px;
-  --w-flank: 200px;
-  --gutter: 1.25rem;
+  --width-text: 620px;
+  --width-flank: 200px;
+  --width-wide: 1020px;
+  --spacing-gutter: 1.25rem;
 
-  /* Contribution grid — shared by the chart and its legend, which are siblings.
-     15px is the largest square that fits 53 weeks inside the breakout track. */
+  /* Contribution grid. 15px is the largest square that fits 53 weeks inside
+     the breakout track — 16px overflows and reintroduces a scrollbar. */
   --gh-cell: 15px;
   --gh-gap: 3px;
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+    color-scheme: dark;
+    -webkit-tap-highlight-color: transparent;
+  }
 
-html {
-  -webkit-text-size-adjust: 100%;
-  scroll-behavior: smooth;
-  color-scheme: dark;
-  -webkit-tap-highlight-color: transparent;
-}
+  body {
+    font-family: var(--font-sans);
+    background: var(--color-background);
+    color: var(--color-foreground);
+    font-size: 16px;
+    line-height: 1.65;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    background-image: radial-gradient(
+      60rem 30rem at 50% -12rem,
+      --alpha(var(--color-accent) / 8%),
+      transparent 70%
+    );
+    background-repeat: no-repeat;
+  }
 
-body {
-  font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, sans-serif;
-  background: var(--background);
-  color: var(--foreground);
-  font-size: 16px;
-  line-height: 1.65;
-  min-height: 100vh;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-  background-image: radial-gradient(
-    60rem 30rem at 50% -12rem,
-    rgba(217, 138, 79, 0.08),
-    transparent 70%
-  );
-  background-repeat: no-repeat;
-}
+  ::selection {
+    background: --alpha(var(--color-accent) / 30%);
+  }
 
-::selection {
-  background: rgba(217, 138, 79, 0.3);
-}
+  a {
+    color: inherit;
+    text-decoration: none;
+    touch-action: manipulation;
+  }
 
-a {
-  color: var(--foreground);
-  text-decoration: none;
-  transition: color 0.15s ease;
-  touch-action: manipulation;
-}
-
-a:hover {
-  color: var(--accent-hover);
-}
-
-:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 3px;
-}
-
-code {
-  font-family: var(--mono);
-  font-size: 0.875em;
-  background: var(--card);
-  border: 1px solid var(--border);
-  padding: 0.1em 0.4em;
-}
-
-/* ---------- nav ---------- */
-.nav {
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  background: color-mix(in srgb, var(--background) 78%, transparent);
-  backdrop-filter: saturate(180%) blur(12px);
-  -webkit-backdrop-filter: saturate(180%) blur(12px);
-}
-
-.navInner {
-  width: 100%;
-  max-width: calc(var(--w-text) + var(--w-flank) * 2);
-  margin: 0 auto;
-  padding: 1.1rem var(--gutter);
-  display: flex;
-  gap: 1.4rem;
-}
-
-.navLink {
-  font-family: var(--mono);
-  font-size: 0.78rem;
-  color: var(--faint);
-}
-
-.navLink:hover {
-  color: var(--foreground);
-}
-
-.navLinkActive {
-  color: var(--foreground);
-}
-
-/* ---------- layout ---------- */
-/* Children sit in the narrow text column by default; .breakout widens to the
-   flanking tracks. Sections use subgrid so their contents can do the same. */
-/* The text track is sized absolutely — min() of its ideal width and whatever
-   the viewport allows minus gutters. That way the flanks give up their space
-   first and collapse to 0 on narrow screens, instead of every track shrinking
-   proportionally and stranding the copy in a thin ribbon. */
-.page {
-  display: grid;
-  grid-template-columns:
-    [full-start] minmax(var(--gutter), 1fr)
-    [wide-start] minmax(0, var(--w-flank))
-    [text-start] min(var(--w-text), 100% - var(--gutter) * 2) [text-end]
-    minmax(0, var(--w-flank)) [wide-end]
-    minmax(var(--gutter), 1fr) [full-end];
-  padding: clamp(1.5rem, 5vh, 3rem) 0 5rem;
-}
-
-.page > * {
-  grid-column: text;
-}
-
-.breakout {
-  grid-column: wide;
-}
-
-.section {
-  grid-column: full;
-  display: grid;
-  grid-template-columns: subgrid;
-  margin-top: 3.5rem;
-}
-
-.section > * {
-  grid-column: text;
-}
-
-.section > .breakout {
-  grid-column: wide;
-}
-
-.sectionHead {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 1rem;
-  margin-bottom: 1rem;
-}
-
-.sectionLabel {
-  font-family: var(--serif);
-  font-size: 1.9rem;
-  font-weight: 400;
-  line-height: 1.1;
-  letter-spacing: -0.01em;
-  text-transform: lowercase;
-  color: var(--foreground);
-}
-
-.sectionAll {
-  font-family: var(--mono);
-  font-size: 0.7rem;
-  text-transform: lowercase;
-  color: var(--faint);
-  white-space: nowrap;
-}
-
-.sectionAll:hover {
-  color: var(--foreground);
-}
-
-.sectionAll .arrow {
-  transition: transform 0.15s ease;
-  display: inline-block;
-}
-
-.sectionAll:hover .arrow {
-  transform: translateX(2px);
-  color: var(--accent);
-}
-
-/* ---------- hero ---------- */
-.name {
-  font-family: var(--serif);
-  font-size: clamp(2.4rem, 7vw, 3.4rem);
-  font-weight: 400;
-  line-height: 1.02;
-  letter-spacing: -0.02em;
-  text-transform: lowercase;
-  text-wrap: balance;
-  color: var(--foreground);
-}
-
-.tagline {
-  font-family: var(--mono);
-  font-size: 0.78rem;
-  text-transform: lowercase;
-  color: var(--faint);
-  margin-top: 0.5rem;
-}
-
-.about {
-  margin-top: 2rem;
-  color: var(--muted);
-  font-size: 0.95rem;
-  line-height: 1.8;
-  text-wrap: pretty;
-}
-
-.about a {
-  color: var(--foreground);
-  border-bottom: 1px solid var(--border-hover);
-  padding-bottom: 1px;
-}
-
-.about a:hover {
-  color: var(--accent-hover);
-  border-color: var(--accent);
-}
-
-/* ---------- inline links row ---------- */
-.links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem 1.1rem;
-  margin-top: 1.75rem;
-}
-
-.link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  font-family: var(--mono);
-  font-size: 0.78rem;
-  text-transform: lowercase;
-  color: var(--muted);
-}
-
-.link:hover {
-  color: var(--foreground);
-}
-
-.link .arrow {
-  color: var(--faint);
-  transition: transform 0.15s ease;
-}
-
-.link:hover .arrow {
-  transform: translate(2px, -2px);
-  color: var(--accent);
-}
-
-/* ---------- list rows (projects / writing / elsewhere) ---------- */
-/* Dashed cell dividers, drawn on the container's top/left and each cell's
-   bottom/right so interior rules never double up. */
-.rowGrid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  border-top: 1px dashed var(--border);
-  border-left: 1px dashed var(--border);
-}
-
-@media (max-width: 640px) {
-  .rowGrid {
-    grid-template-columns: minmax(0, 1fr);
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
   }
 }
 
-.row {
-  display: block;
-  padding: 1.15rem 1.35rem;
-  border-right: 1px dashed var(--border);
-  border-bottom: 1px dashed var(--border);
-  transition: background 0.15s ease;
+/* The page grid. Kept in CSS rather than inlined as utilities because the
+   named grid lines (full / wide / text) are what let a heading sit in the
+   narrow column while the grid below it breaks out — and named lines have no
+   utility equivalent. Children default to `text`; `.breakout` opts into `wide`.
+
+   The text track is sized with min() so the flanks surrender their space first
+   and collapse to 0 on narrow screens, instead of every track shrinking
+   proportionally and stranding the copy in a thin ribbon. */
+@layer components {
+  .page {
+    display: grid;
+    grid-template-columns:
+      [full-start] minmax(var(--spacing-gutter), 1fr)
+      [wide-start] minmax(0, var(--width-flank))
+      [text-start] min(var(--width-text), 100% - var(--spacing-gutter) * 2)
+      [text-end] minmax(0, var(--width-flank))
+      [wide-end] minmax(var(--spacing-gutter), 1fr) [full-end];
+    padding-block: clamp(1.5rem, 5vh, 3rem) 5rem;
+  }
+
+  .page > * {
+    grid-column: text;
+  }
+
+  .section {
+    grid-column: full;
+    display: grid;
+    grid-template-columns: subgrid;
+    margin-top: 3.5rem;
+  }
+
+  .section > * {
+    grid-column: text;
+  }
+
+  .breakout,
+  .section > .breakout {
+    grid-column: wide;
+  }
 }
 
-.row:hover {
-  background: var(--card);
+/* Article body. Styled here rather than with utilities because the markup is
+   generated from MDX — there are no elements to put classes on. */
+@layer components {
+  .prose {
+    color: var(--color-foreground);
+    font-size: 1rem;
+    line-height: 1.8;
+  }
+
+  .prose > * + * {
+    margin-top: 1.15rem;
+  }
+
+  .prose h2,
+  .prose h3 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    scroll-margin-top: 2rem;
+    text-wrap: balance;
+  }
+
+  .prose h2 {
+    font-size: 1.7rem;
+    margin-top: 2.5rem;
+  }
+
+  .prose h3 {
+    font-size: 1.35rem;
+    margin-top: 2rem;
+  }
+
+  .prose p,
+  .prose ul,
+  .prose ol {
+    color: #d4d4d4;
+    text-wrap: pretty;
+  }
+
+  .prose ul,
+  .prose ol {
+    padding-left: 1.4rem;
+    list-style: revert;
+  }
+
+  .prose li + li {
+    margin-top: 0.4rem;
+  }
+
+  .prose a {
+    color: var(--color-accent);
+    border-bottom: 1px solid transparent;
+  }
+
+  .prose a:hover {
+    border-color: var(--color-accent);
+  }
+
+  .prose blockquote {
+    border-left: 2px solid var(--color-accent);
+    padding-left: 1rem;
+    color: var(--color-muted);
+    font-style: italic;
+  }
+
+  .prose pre {
+    background: var(--color-card);
+    border: 1px solid var(--color-line);
+    padding: 1rem 1.15rem;
+    overflow-x: auto;
+    font-size: 0.9rem;
+  }
+
+  .prose code {
+    font-family: var(--font-mono);
+    font-size: 0.875em;
+    background: var(--color-card);
+    border: 1px solid var(--color-line);
+    padding: 0.1em 0.4em;
+  }
+
+  .prose pre code {
+    background: none;
+    border: none;
+    padding: 0;
+  }
+
+  .prose img {
+    max-width: 100%;
+    border: 1px solid var(--color-line);
+  }
+
+  .prose hr {
+    border: none;
+    border-top: 1px dashed var(--color-line);
+    margin: 2.5rem 0;
+  }
 }
 
-.rowHead {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 1rem;
-}
-
-.rowTitle {
-  font-family: var(--serif);
-  font-weight: 400;
-  font-size: 1.2rem;
-  line-height: 1.25;
-  color: var(--foreground);
-  letter-spacing: -0.01em;
-  min-width: 0;
-  text-wrap: balance;
-}
-
-.rowMeta {
-  flex-shrink: 0;
-  font-size: 0.7rem;
-  color: var(--faint);
-  font-family: var(--mono);
-  font-variant-numeric: tabular-nums;
-  text-transform: lowercase;
-}
-
-.rowDesc {
-  margin-top: 0.45rem;
-  color: var(--muted);
-  font-size: 0.85rem;
-  line-height: 1.6;
-}
-
-.rowQuote {
-  margin-top: 0.6rem;
-  padding-left: 0.8rem;
-  border-left: 1px solid var(--accent);
-  color: var(--foreground);
-  font-size: 0.85rem;
-  font-style: italic;
-  text-wrap: pretty;
-}
-
-.tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.65rem;
-  margin-top: 0.75rem;
-}
-
-.tag {
-  font-family: var(--mono);
-  font-size: 0.68rem;
-  text-transform: lowercase;
-  color: var(--faint);
-}
-
-/* ---------- github contributions ---------- */
-.ghScroll {
-  overflow-x: auto;
-  overscroll-behavior-x: contain;
-  scrollbar-width: none;
-}
-
-.ghScroll::-webkit-scrollbar {
-  display: none;
-}
-
-.ghChart {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 0.3rem 0.5rem;
-  min-width: min-content;
-}
-
-/* month row sits above the grid, in the right-hand column */
-.ghMonths {
-  grid-column: 2;
-  grid-row: 1;
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: var(--gh-cell);
-  gap: var(--gh-gap);
-  font-family: var(--mono);
-  font-size: 0.65rem;
-  color: var(--faint);
-  line-height: 1;
-}
-
-/* labels overflow their 10px column rather than stretching the grid */
-.ghMonths span {
-  overflow: visible;
-  white-space: nowrap;
-}
-
-.ghDays {
-  grid-column: 1;
-  grid-row: 2;
-  display: grid;
-  grid-template-rows: repeat(7, var(--gh-cell));
-  gap: var(--gh-gap);
-  font-family: var(--mono);
-  font-size: 0.65rem;
-  color: var(--faint);
-  line-height: var(--gh-cell);
-  text-align: right;
-}
-
-.ghGrid {
-  grid-column: 2;
-  grid-row: 2;
-  display: grid;
-  grid-auto-flow: column;
-  grid-template-rows: repeat(7, var(--gh-cell));
-  grid-auto-columns: var(--gh-cell);
-  gap: var(--gh-gap);
-}
-
-.ghCell {
-  width: var(--gh-cell);
-  height: var(--gh-cell);
-  background: var(--card);
-  outline: 1px solid rgba(255, 255, 255, 0.04);
-  outline-offset: -1px;
-}
-
-.ghCell[data-level="1"] {
-  background: rgba(217, 138, 79, 0.28);
-}
-
-.ghCell[data-level="2"] {
-  background: rgba(217, 138, 79, 0.5);
-}
-
-.ghCell[data-level="3"] {
-  background: rgba(217, 138, 79, 0.72);
-}
-
-.ghCell[data-level="4"] {
-  background: rgba(217, 138, 79, 0.95);
-}
-
-.ghCellEmpty {
-  background: transparent;
-  outline: none;
-}
-
-.ghLegend {
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-  margin-top: 0.75rem;
-  font-family: var(--mono);
-  font-size: 0.65rem;
-  text-transform: lowercase;
-  color: var(--faint);
-}
-
-/* legend swatches stay small — they're a key, not part of the chart */
-.ghLegend .ghCell {
-  width: 10px;
-  height: 10px;
-}
-
-.ghLegend span:first-child {
-  margin-right: 0.15rem;
-}
-
-.ghLegend span:last-child {
-  margin-left: 0.15rem;
-}
-
-/* ---------- footer ---------- */
-.footer {
-  margin-top: 4.5rem;
-  padding-top: 1.25rem;
-  border-top: 1px dashed var(--border);
-  color: var(--faint);
-  font-family: var(--mono);
-  font-size: 0.7rem;
-  text-transform: lowercase;
-  display: flex;
-  justify-content: space-between;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-/* ---------- article prose ---------- */
-.prose {
-  color: var(--foreground);
-  font-size: 1rem;
-  line-height: 1.8;
-}
-
-.prose > * + * {
-  margin-top: 1.15rem;
-}
-
-.prose h2 {
-  font-family: var(--serif);
-  font-size: 1.7rem;
-  font-weight: 400;
-  line-height: 1.15;
-  letter-spacing: -0.01em;
-  margin-top: 2.5rem;
-  scroll-margin-top: 2rem;
-  text-wrap: balance;
-}
-
-.prose h3 {
-  font-family: var(--serif);
-  font-size: 1.35rem;
-  font-weight: 400;
-  margin-top: 2rem;
-  scroll-margin-top: 2rem;
-  text-wrap: balance;
-}
-
-.prose p,
-.prose ul,
-.prose ol {
-  color: #d4d4d4;
-  text-wrap: pretty;
-}
-
-.prose ul,
-.prose ol {
-  padding-left: 1.4rem;
-}
-
-.prose li + li {
-  margin-top: 0.4rem;
-}
-
-.prose a {
-  color: var(--accent);
-  border-bottom: 1px solid transparent;
-}
-
-.prose a:hover {
-  border-color: var(--accent);
-}
-
-.prose blockquote {
-  border-left: 2px solid var(--accent);
-  padding-left: 1rem;
-  color: var(--muted);
-  font-style: italic;
-}
-
-.prose pre {
-  background: var(--card);
-  border: 1px solid var(--border);
-  padding: 1rem 1.15rem;
-  overflow-x: auto;
-  font-size: 0.9rem;
-}
-
-.prose pre code {
-  background: none;
-  border: none;
-  padding: 0;
-}
-
-.prose img {
-  max-width: 100%;
-  border: 1px solid var(--border);
-}
-
-.prose hr {
-  border: none;
-  border-top: 1px dashed var(--border);
-  margin: 2.5rem 0;
-}
-
-.articleHeader {
-  margin-bottom: 2.5rem;
-}
-
-.articleTitle {
-  font-family: var(--serif);
-  font-size: clamp(2rem, 5.5vw, 2.8rem);
-  font-weight: 400;
-  letter-spacing: -0.02em;
-  line-height: 1.08;
-  text-wrap: balance;
-}
-
-.articleDate {
-  color: var(--faint);
-  font-size: 0.72rem;
-  font-family: var(--mono);
-  font-variant-numeric: tabular-nums;
-  text-transform: lowercase;
-  margin-top: 0.75rem;
-}
-
-/* ---------- reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

@@ -15,8 +15,11 @@ export function Nav() {
   const pathname = usePathname();
 
   return (
-    <nav className="nav" aria-label="Main">
-      <div className="navInner">
+    <nav
+      aria-label="Main"
+      className="sticky top-0 z-10 bg-background/80 backdrop-blur-md backdrop-saturate-150"
+    >
+      <div className="mx-auto flex w-full max-w-(--width-wide) gap-6 px-gutter py-[1.1rem]">
         {items.map((item) => {
           const active =
             item.href === "/"
@@ -26,8 +29,10 @@ export function Nav() {
             <Link
               key={item.href}
               href={item.href}
-              className={active ? "navLink navLinkActive" : "navLink"}
               aria-current={active ? "page" : undefined}
+              className={`font-mono text-[0.78rem] transition-colors hover:text-foreground ${
+                active ? "text-foreground" : "text-faint"
+              }`}
             >
               {item.label}
             </Link>
