@@ -1,4 +1,5 @@
 import { Contributions } from "./components/contributions";
+import { Experience } from "./components/experience";
 import { Now } from "./components/now";
 import { PreviewLink } from "./components/preview-link";
 import * as s from "./components/styles";
@@ -81,6 +82,8 @@ export default function Home() {
       </div>
 
       <Now />
+
+      <Experience />
 
       <Contributions login="kavinvalli" />
 
