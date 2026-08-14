@@ -1,6 +1,6 @@
 "use client";
 
-/* eslint-disable @next/next/no-img-element */
+import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 // Photos are duotoned toward the accent in the strip — greyscale underneath,
@@ -15,6 +15,7 @@ export function PhotoStrip({
 }) {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const [index, setIndex] = useState<number | null>(null);
+  const [loaded, setLoaded] = useState<Record<string, boolean>>({});
 
   const open = (i: number) => {
     setIndex(i);
@@ -59,13 +60,17 @@ export function PhotoStrip({
             type="button"
             onClick={() => open(i)}
             aria-label={`Open photo ${i + 1} of ${images.length} from ${company}`}
-            className="group/photo relative block h-36 w-52 shrink-0 cursor-zoom-in snap-start overflow-hidden bg-card"
+            className={`group/photo relative block h-36 w-52 shrink-0 cursor-zoom-in snap-start overflow-hidden bg-card ${
+              loaded[src] ? "" : "animate-pulse"
+            }`}
           >
-            <img
+            <Image
               src={src}
               alt=""
-              loading="lazy"
-              className="absolute inset-0 size-full object-cover grayscale contrast-110 transition duration-300 hoverable:group-hover/photo:grayscale-0"
+              fill
+              sizes="208px"
+              onLoad={() => setLoaded((prev) => ({ ...prev, [src]: true }))}
+              className="object-cover grayscale contrast-110 transition duration-300 hoverable:group-hover/photo:grayscale-0"
             />
             <span className="absolute inset-0 bg-accent/45 mix-blend-color transition-opacity duration-300 hoverable:group-hover/photo:opacity-0" />
           </button>
@@ -93,12 +98,15 @@ export function PhotoStrip({
           >
             {/* every photo gets the same frame as the strip, so stepping
                 through a set doesn't resize the viewer under the cursor */}
-            <div className="flex aspect-[13/9] w-[min(88vw,900px)] max-h-[78vh] items-center justify-center">
-              <img
+            <div className="relative aspect-[13/9] max-h-[78vh] w-[min(88vw,900px)]">
+              <Image
                 src={images[index]}
                 alt={`${company}, photo ${index + 1} of ${images.length}`}
+                fill
+                priority
+                sizes="(max-width: 900px) 88vw, 900px"
                 onClick={(event) => event.stopPropagation()}
-                className="max-h-full max-w-full object-contain"
+                className="object-contain"
               />
             </div>
             <div className="flex items-center gap-4 font-mono text-[0.68rem] lowercase text-faint">

@@ -32,9 +32,9 @@ export const experience: Experience[] = [
       "Folders, version history, VM tiering, and the v0 Slack agent.",
     href: "https://v0.app",
     images: [
-      "/images/experience/vercel/IMG_8786.png",
-      "/images/experience/vercel/2.JPG",
-      "/images/experience/vercel/3.PNG",
+      "/images/experience/vercel/IMG_8786.jpg",
+      "/images/experience/vercel/2.jpg",
+      "/images/experience/vercel/3.jpg",
     ],
   },
   {
@@ -45,9 +45,9 @@ export const experience: Experience[] = [
     href: "https://helicone.ai",
     images: [
       "/images/experience/helicone/1.jpeg",
-      "/images/experience/helicone/2.png",
-      "/images/experience/helicone/3.png",
-      "/images/experience/helicone/4.png",
+      "/images/experience/helicone/2.jpg",
+      "/images/experience/helicone/3.jpg",
+      "/images/experience/helicone/4.jpg",
     ],
   },
   {
