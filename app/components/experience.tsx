@@ -1,34 +1,6 @@
-/* eslint-disable @next/next/no-img-element */
 import { experience } from "../../lib/experience";
+import { PhotoStrip } from "./photo-strip";
 import * as s from "./styles";
-
-// Photos are duotoned toward the accent — greyscale underneath, an amber wash
-// on top in `color` blend mode — and each one lifts to full colour on hover.
-function Photos({ images, company }: { images: string[]; company: string }) {
-  return (
-    <div
-      tabIndex={0}
-      role="group"
-      aria-label={`Photos from ${company}`}
-      className="mt-4 -mb-1 flex snap-x snap-mandatory gap-2 overflow-x-auto overscroll-x-contain pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-    >
-      {images.map((src) => (
-        <span
-          key={src}
-          className="group/photo relative block h-36 w-52 shrink-0 snap-start overflow-hidden bg-card"
-        >
-          <img
-            src={src}
-            alt=""
-            loading="lazy"
-            className="absolute inset-0 size-full object-cover grayscale contrast-110 transition duration-300 hoverable:group-hover/photo:grayscale-0"
-          />
-          <span className="absolute inset-0 bg-accent/45 mix-blend-color transition-opacity duration-300 hoverable:group-hover/photo:opacity-0" />
-        </span>
-      ))}
-    </div>
-  );
-}
 
 export function Experience() {
   if (experience.length === 0) return null;
@@ -76,7 +48,7 @@ export function Experience() {
             <p className={s.rowDesc}>{job.description}</p>
 
             {job.images && job.images.length > 0 && (
-              <Photos images={job.images} company={job.company} />
+              <PhotoStrip images={job.images} company={job.company} />
             )}
           </li>
         ))}
