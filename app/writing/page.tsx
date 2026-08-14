@@ -19,26 +19,39 @@ export default function WritingIndex() {
       <p className="tagline">Essays, notes, and things I&apos;m figuring out.</p>
 
       <section className="section">
-        {posts.length === 0 && (
+        {posts.length === 0 ? (
           <p className="rowDesc">Nothing here yet — check back soon.</p>
+        ) : (
+          <div className="rowGrid breakout">
+            {posts.map((post) => (
+              <Link
+                key={post.slug}
+                className="row"
+                href={`/writing/${post.slug}`}
+              >
+                <div className="rowHead">
+                  <span className="rowTitle">{post.title}</span>
+                  <span className="rowMeta">{formatDate(post.date)}</span>
+                </div>
+                {post.description && (
+                  <p className="rowDesc">{post.description}</p>
+                )}
+              </Link>
+            ))}
+          </div>
         )}
-        {posts.map((post) => (
-          <Link key={post.slug} className="row" href={`/writing/${post.slug}`}>
-            <div className="rowHead">
-              <span className="rowTitle">{post.title}</span>
-              <span className="rowMeta">{formatDate(post.date)}</span>
-            </div>
-            {post.description && <p className="rowDesc">{post.description}</p>}
-          </Link>
-        ))}
       </section>
 
       {mentions.length > 0 && (
         <section className="section">
-          <p className="sectionLabel">Elsewhere</p>
-          {mentions.map((mention) => (
-            <MentionRow key={mention.link} mention={mention} />
-          ))}
+          <div className="sectionHead">
+            <p className="sectionLabel">Elsewhere</p>
+          </div>
+          <div className="rowGrid breakout">
+            {mentions.map((mention) => (
+              <MentionRow key={mention.link} mention={mention} />
+            ))}
+          </div>
         </section>
       )}
 

@@ -15,9 +15,11 @@ export default function ProjectsIndex() {
       <p className="tagline">Things I&apos;ve built, shipped, and maintained.</p>
 
       <section className="section">
-        {projects.map((project) => (
-          <ProjectRow key={project.name} project={project} />
-        ))}
+        <div className="rowGrid breakout">
+          {projects.map((project) => (
+            <ProjectRow key={project.name} project={project} />
+          ))}
+        </div>
       </section>
 
       <footer className="footer">

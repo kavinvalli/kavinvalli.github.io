@@ -32,8 +32,9 @@ export async function Contributions({ login }: { login: string }) {
         </a>
       </div>
 
-      <div className="ghScroll">
-        <div className="ghChart">
+      <div className="breakout">
+        <div className="ghScroll">
+          <div className="ghChart">
           <div className="ghDays" aria-hidden="true">
             {DAY_LABELS.map((day, i) => (
               <span key={i}>{day}</span>
@@ -66,15 +67,16 @@ export async function Contributions({ login }: { login: string }) {
               )
             )}
           </div>
+          </div>
         </div>
-      </div>
 
-      <div className="ghLegend">
-        <span>Less</span>
-        {[0, 1, 2, 3, 4].map((level) => (
-          <span key={level} className="ghCell" data-level={level} />
-        ))}
-        <span>More</span>
+        <div className="ghLegend">
+          <span>Less</span>
+          {[0, 1, 2, 3, 4].map((level) => (
+            <span key={level} className="ghCell" data-level={level} />
+          ))}
+          <span>More</span>
+        </div>
       </div>
     </section>
   );
