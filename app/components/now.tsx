@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { now, nowUpdated } from "../../lib/now";
+import { getLatestFilm, stars } from "../../lib/letterboxd";
+import { letterboxdUser, now, nowUpdated } from "../../lib/now";
 import { getAllPosts } from "../../lib/writing";
 import * as s from "./styles";
 
@@ -10,10 +11,13 @@ type ResolvedEntry = {
   note?: string;
 };
 
-// Entries marked `latestPost` are filled from the newest published post, and
-// drop out entirely if there isn't one.
-function resolve(): ResolvedEntry[] {
+// Entries marked `latestPost` / `latestFilm` are filled from live sources and
+// drop out entirely when the source has nothing.
+async function resolve(): Promise<ResolvedEntry[]> {
   const [latest] = getAllPosts();
+  const film = now.some((entry) => entry.latestFilm)
+    ? await getLatestFilm(letterboxdUser)
+    : null;
 
   return now.flatMap((entry) => {
     if (entry.latestPost) {
@@ -27,6 +31,32 @@ function resolve(): ResolvedEntry[] {
         },
       ];
     }
+
+    if (entry.latestFilm) {
+      if (!film) return [];
+      const meta = [
+        film.rating !== null ? stars(film.rating) : null,
+        film.watchedDate
+          ? new Date(film.watchedDate).toLocaleDateString("en-US", {
+              month: "short",
+              year: "numeric",
+              timeZone: "UTC",
+            })
+          : null,
+      ]
+        .filter(Boolean)
+        .join(" · ");
+
+      return [
+        {
+          label: entry.label,
+          value: film.year ? `${film.title} (${film.year})` : film.title,
+          href: film.url,
+          note: entry.note ?? (meta || undefined),
+        },
+      ];
+    }
+
     return entry.value ? [{ ...entry, value: entry.value }] : [];
   });
 }
@@ -44,8 +74,8 @@ function updatedLabel(value: string) {
     .toLowerCase();
 }
 
-export function Now() {
-  const entries = resolve();
+export async function Now() {
+  const entries = await resolve();
   if (entries.length === 0) return null;
 
   return (

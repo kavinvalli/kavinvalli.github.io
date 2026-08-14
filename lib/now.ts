@@ -10,7 +10,12 @@ export type NowEntry = {
   note?: string;
   // fills value + href from the newest published post, so this never goes stale
   latestPost?: boolean;
+  // fills value + href + note from the most recent Letterboxd diary entry
+  latestFilm?: boolean;
 };
+
+// whose Letterboxd diary `latestFilm` reads
+export const letterboxdUser = "kavinvalli";
 
 export const nowUpdated = "2026-08";
 
@@ -29,6 +34,10 @@ export const now: NowEntry[] = [
     value: "The Guest List",
     href: "https://www.goodreads.com/en/book/show/52656911-the-guest-list",
     note: "the same book for about six months now — i almost only read when i travel 😭 (it's a great book though!)",
+  },
+  {
+    label: "last watched",
+    latestFilm: true,
   },
   {
     label: "studying",
