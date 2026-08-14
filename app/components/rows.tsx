@@ -1,21 +1,18 @@
 // Shared row markup so the homepage previews and the dedicated index pages
 // stay identical — change a row here, both places follow.
+import Link from "next/link";
 import type { Mention } from "../../lib/mentions";
 import type { Project } from "../../lib/projects";
 import { formatDate } from "../../lib/writing";
 import * as s from "./styles";
 
 export function ProjectRow({ project }: { project: Project }) {
-  return (
-    <a
-      className={s.row}
-      href={project.link}
-      target="_blank"
-      rel="noreferrer"
-    >
+  // a writeup wins over an outbound link; arrows say which you're getting
+  const body = (
+    <>
       <div className={s.rowHead}>
         <span className={s.rowTitle}>{project.name}</span>
-        <span className={s.rowMeta}>↗</span>
+        <span className={s.rowMeta}>{project.slug ? "→" : "↗"}</span>
       </div>
       <p className={s.rowDesc}>{project.description}</p>
       <div className={s.tags}>
@@ -25,6 +22,22 @@ export function ProjectRow({ project }: { project: Project }) {
           </span>
         ))}
       </div>
+    </>
+  );
+
+  if (project.slug) {
+    return (
+      <Link className={s.row} href={`/projects/${project.slug}`}>
+        {body}
+      </Link>
+    );
+  }
+
+  if (!project.link) return <div className={s.row}>{body}</div>;
+
+  return (
+    <a className={s.row} href={project.link} target="_blank" rel="noreferrer">
+      {body}
     </a>
   );
 }

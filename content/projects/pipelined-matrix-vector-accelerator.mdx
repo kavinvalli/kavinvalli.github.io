@@ -1,0 +1,104 @@
+---
+title: "Pipelined Matrix-Vector Accelerator"
+description: "An 8-lane pipelined matrix-vector multiplication engine in SystemVerilog, closing timing at ~400 MHz on an AMD Kria KV260."
+---
+
+This started as a lab for **ECE 327: Digital Hardware Systems** at Waterloo, but
+it's the piece of hardware I'm happiest with so far — a complete matrix-vector
+multiplication engine, from arithmetic units up through the control logic that
+drives them.
+
+The design is close in spirit to the MVM engines inside Microsoft's Brainwave
+deep-learning accelerator: keep the weights resident in on-chip memory, stream
+the vector past them, and let a wide array of multiply-accumulate lanes do the
+work every cycle.
+
+## What it does
+
+A matrix-vector multiply is the inner loop of basically every neural network.
+For an M×N matrix and a length-N vector, every output element is one dot product
+of a matrix row with the vector. The engine parallelises this two ways at once:
+**within** a dot product, and **across** output elements.
+
+## Architecture
+
+The engine is built from four pieces, three of which I implemented:
+
+**Dot product unit** — takes two 8-element vectors and produces a scalar. Eight
+parallel multipliers feed a binary adder reduction tree of log₂(8) = 3 levels.
+Every level gets its own register stage, so the unit is five deep end to end:
+input registers, multiply, then the three adder levels. It accepts a new pair of
+vectors every cycle rather than stalling for the tree to drain.
+
+This is where most of the clock frequency comes from. Unpipelined, a multiplier
+and three adders sit in one combinational path and timing dies. A `valid` bit
+shifts down a 5-stage register alongside the data so the consumer knows when a
+result is real.
+
+**Accumulator** — sums the partial dot products that make up one output element,
+with `first` and `last` control bits marking the boundaries of an accumulation
+so the register can reset and signal a valid result without extra handshaking.
+
+**Memories** — simple dual-port BRAMs, one read port and one write port, with a
+one-cycle read latency that the control logic has to account for.
+
+**Controller** — a two-state FSM, `IDLE` and `COMPUTE`, and the part that took
+the longest. It keeps two counters — which word of the current row, and which
+row of this lane — and from those derives both memory read addresses plus the
+accumulator's `first` and `last` bits.
+
+The subtle part isn't the counting, it's the **latency alignment**. The
+controller issues an address at cycle *t*, but the BRAM doesn't produce data
+until *t+1*, and the dot product unit doesn't produce a result until five cycles
+after that. So `first`, `last`, and `valid` are each pushed down a six-stage
+shift register on the way to the accumulator: one stage for the memory read,
+five for the dot product pipeline. Get that off by one and the accumulator
+resets on the wrong cycle and every output is quietly wrong — which is exactly
+the kind of bug that only shows up in a waveform.
+
+The same problem shows up in `busy`. It can't just track the FSM, because the
+engine is still draining long after the controller has gone back to `IDLE`, so
+it ORs the FSM state together with every valid bit still in flight.
+
+## Output lanes and data layout
+
+The engine has `NUM_OLANES` compute lanes, each with its own matrix memory, dot
+product unit, and accumulator, and each responsible for one element of the
+output vector.
+
+Matrix rows are distributed across lane memories **round robin** — lane 0 holds
+rows 0, `NUM_OLANES`, `2·NUM_OLANES`, and so on. Each row is chopped into N/8
+words of 8 elements, matching the dot product unit's input width, and stored
+contiguously. The vector operand lives in a single shared vector memory in the
+same layout, and gets broadcast to every lane.
+
+The payoff is that all lanes read the same vector word on the same cycle while
+reading different matrix words, so a single vector memory read feeds all eight
+lanes. With eight output lanes each doing an 8-wide dot product, that's **64
+multiply-accumulates per cycle** — around 25 billion per second at the clock
+this closed at.
+
+## Timing
+
+The lab targeted 350 MHz. The provided constraints file asks for a deliberately
+unattainable 1 ns period, which pushes the tools to optimise as hard as they
+can and makes the critical path obvious in the timing report.
+
+The final design closed at **~400 MHz** on the AMD Kria KV260. Getting there was
+mostly about pipelining the reduction tree properly and keeping the control
+logic off the critical path — the arithmetic is easy to make wide, and hard to
+make fast.
+
+## What I'd do differently
+
+The accumulator is the weak point: it accumulates into the same 32-bit width as
+the dot product output, with no extra headroom. Individual products are 8×8 into
+16 bits, so a single dot product is nowhere near overflowing, but a long enough
+row summed into 32 bits eventually will — and it wraps silently. A real design
+gives the accumulator wider registers than the multiplier tree feeding it.
+
+The lane count is a parameter, but the layout assumes M divides evenly by
+`NUM_OLANES`. Ragged matrices would need padding, or a controller that skips
+lanes on the final pass. And it's signed integer only — parameterised widths,
+but no floating point or block floating point, which is what a real accelerator
+would want.

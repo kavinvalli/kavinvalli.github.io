@@ -3,10 +3,20 @@ export type Project = {
   name: string;
   description: string;
   stack: string[];
-  link: string;
+  // outbound link, when the project lives somewhere public
+  link?: string;
+  // slug of a writeup in content/projects/ — takes precedence over `link`
+  slug?: string;
 };
 
 export const projects: Project[] = [
+  {
+    name: "Pipelined Matrix-Vector Accelerator",
+    description:
+      "An 8-lane pipelined matrix-vector multiplication engine in SystemVerilog, closing timing at ~400 MHz on an AMD Kria KV260.",
+    stack: ["SystemVerilog", "Vivado", "FPGA"],
+    slug: "pipelined-matrix-vector-accelerator",
+  },
   {
     name: "Liberty",
     description:
