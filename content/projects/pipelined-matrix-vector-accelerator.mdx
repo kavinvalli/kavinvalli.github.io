@@ -3,10 +3,9 @@ title: "Pipelined Matrix-Vector Accelerator"
 description: "An 8-lane pipelined matrix-vector multiplication engine in SystemVerilog, closing timing at ~400 MHz on an AMD Kria KV260."
 ---
 
-This started as a lab for **ECE 327: Digital Hardware Systems** at Waterloo, but
-it's the piece of hardware I'm happiest with so far — a complete matrix-vector
-multiplication engine, from arithmetic units up through the control logic that
-drives them.
+This started as a lab for **ECE 327: Digital Hardware Systems** at Waterloo, and
+it was pretty cool — a complete matrix-vector multiplication engine, from
+arithmetic units up through the control logic that drives them.
 
 The design is close in spirit to the MVM engines inside Microsoft's Brainwave
 deep-learning accelerator: keep the weights resident in on-chip memory, stream
@@ -42,8 +41,7 @@ so the register can reset and signal a valid result without extra handshaking.
 **Memories** — simple dual-port BRAMs, one read port and one write port, with a
 one-cycle read latency that the control logic has to account for.
 
-**Controller** — a two-state FSM, `IDLE` and `COMPUTE`, and the part that took
-the longest. It keeps two counters — which word of the current row, and which
+**Controller** — a two-state FSM, `IDLE` and `COMPUTE`. It keeps two counters — which word of the current row, and which
 row of this lane — and from those derives both memory read addresses plus the
 accumulator's `first` and `last` bits.
 
@@ -88,17 +86,3 @@ The final design closed at **~400 MHz** on the AMD Kria KV260. Getting there was
 mostly about pipelining the reduction tree properly and keeping the control
 logic off the critical path — the arithmetic is easy to make wide, and hard to
 make fast.
-
-## What I'd do differently
-
-The accumulator is the weak point: it accumulates into the same 32-bit width as
-the dot product output, with no extra headroom. Individual products are 8×8 into
-16 bits, so a single dot product is nowhere near overflowing, but a long enough
-row summed into 32 bits eventually will — and it wraps silently. A real design
-gives the accumulator wider registers than the multiplier tree feeding it.
-
-The lane count is a parameter, but the layout assumes M divides evenly by
-`NUM_OLANES`. Ragged matrices would need padding, or a controller that skips
-lanes on the final pass. And it's signed integer only — parameterised widths,
-but no floating point or block floating point, which is what a real accelerator
-would want.
