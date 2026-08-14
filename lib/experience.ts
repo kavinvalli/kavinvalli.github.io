@@ -19,17 +19,17 @@ export const experience: Experience[] = [
   {
     company: "Replicas",
     role: "Software Engineer",
-    period: "2026 — present",
-    description: "Cloud coding agents for engineering teams. YC P26.",
+    period: "May 2026 — present",
+    description: "Cloud coding agents for engineering teams (YC P26)",
     href: "https://tryreplicas.com",
     // images: ["/images/experience/replicas/1.jpg"],
   },
   {
     company: "Vercel",
-    role: "Software Engineer, v0",
-    period: "winter 2026",
+    role: "Engineering Intern",
+    period: "Jan-Apr 2026",
     description:
-      "Folders, version history, VM tiering, and the v0 Slack agent.",
+      "Part of the v0 team, an AI agent that helps anyone create real code and full-stack apps and agents",
     href: "https://v0.app",
     images: [
       "/images/experience/vercel/IMG_8786.jpg",
@@ -40,8 +40,8 @@ export const experience: Experience[] = [
   {
     company: "Helicone",
     role: "Software Engineer",
-    // period: "",  ← fill in, I didn't want to guess the term
-    description: "LLM observability tooling and multilingual SDKs. YC W23.",
+    period: "Sept 2024 - Nov 2025", 
+    description: "LLM observability tooling and multilingual SDKs (YC W23)",
     href: "https://helicone.ai",
     images: [
       "/images/experience/helicone/1.jpeg",
@@ -52,8 +52,8 @@ export const experience: Experience[] = [
   },
   {
     company: "Arcturus Networks",
-    role: "Software Engineer",
-    // period: "",  ← fill in
+    role: "Embedded Full Stack Developer",
+    period: "Jan-Apr 2024",
     description: "Embedded full-stack systems.",
     href: "https://www.arcturusnetworks.com",
     images: [

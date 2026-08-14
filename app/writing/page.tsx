@@ -60,7 +60,15 @@ export default function WritingIndex() {
 
       <footer className={s.footer}>
         <span>© {new Date().getFullYear()} Kavin Desi Valli</span>
-        <Link href="/">kavin.me</Link>
+        <span className="flex gap-4">
+          <a
+            href="/feed.xml"
+            className="text-accent/80 transition-colors hover:text-accent-hover"
+          >
+            rss
+          </a>
+          <Link href="/">kavin.me</Link>
+        </span>
       </footer>
     </main>
   );

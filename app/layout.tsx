@@ -38,6 +38,12 @@ export const metadata: Metadata = {
     siteName: "Kavin Desi Valli",
     type: "website",
   },
+  // lets a reader find the feed from any page on the site. No `canonical` here
+  // on purpose — root metadata is inherited, so it would claim every page is
+  // the homepage.
+  alternates: {
+    types: { "application/rss+xml": [{ url: "/feed.xml", title: "Kavin Desi Valli" }] },
+  },
   twitter: {
     card: "summary_large_image",
     title: "Kavin Desi Valli",
