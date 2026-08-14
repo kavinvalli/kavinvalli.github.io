@@ -9,6 +9,8 @@ type ResolvedEntry = {
   value: string;
   href?: string;
   note?: string;
+  // rendered in accent, ahead of the note
+  noteLead?: string;
 };
 
 // Entries marked `latestPost` / `latestFilm` are filled from live sources and
@@ -19,7 +21,7 @@ async function resolve(): Promise<ResolvedEntry[]> {
     ? await getLatestFilm(letterboxdUser)
     : null;
 
-  return now.flatMap((entry) => {
+  return now.flatMap((entry): ResolvedEntry[] => {
     if (entry.latestPost) {
       if (!latest) return [];
       return [
@@ -34,30 +36,34 @@ async function resolve(): Promise<ResolvedEntry[]> {
 
     if (entry.latestFilm) {
       if (!film) return [];
-      const meta = [
-        film.rating !== null ? stars(film.rating) : null,
-        film.watchedDate
-          ? new Date(film.watchedDate).toLocaleDateString("en-US", {
-              month: "short",
-              year: "numeric",
-              timeZone: "UTC",
-            })
-          : null,
-      ]
-        .filter(Boolean)
-        .join(" · ");
+      const watched = film.watchedDate
+        ? new Date(film.watchedDate).toLocaleDateString("en-US", {
+            month: "short",
+            year: "numeric",
+            timeZone: "UTC",
+          })
+        : null;
 
       return [
         {
           label: entry.label,
           value: film.year ? `${film.title} (${film.year})` : film.title,
           href: film.url,
-          note: entry.note ?? (meta || undefined),
+          noteLead: film.rating !== null ? stars(film.rating) : undefined,
+          note: entry.note ?? watched ?? undefined,
         },
       ];
     }
 
-    return entry.value ? [{ ...entry, value: entry.value }] : [];
+    if (!entry.value) return [];
+    return [
+      {
+        label: entry.label,
+        value: entry.value,
+        href: entry.href,
+        note: entry.note,
+      },
+    ];
   });
 }
 
@@ -117,8 +123,12 @@ export async function Now() {
                   </Link>
                 )}
               </dd>
-              {entry.note && (
+              {(entry.noteLead || entry.note) && (
                 <dd className="mt-1 text-[0.75rem] leading-snug text-pretty text-muted">
+                  {entry.noteLead && (
+                    <span className="text-accent">{entry.noteLead}</span>
+                  )}
+                  {entry.noteLead && entry.note && " · "}
                   {entry.note}
                 </dd>
               )}

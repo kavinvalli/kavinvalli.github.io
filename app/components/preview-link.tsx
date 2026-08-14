@@ -6,8 +6,10 @@ import { getLinkPreview } from "../../lib/preview";
 // `hover:` but not for `group-hover:`, and without it a tap on a touch device
 // leaves the card stuck open.
 
+// Amber underlines put the accent into the intro, which is otherwise
+// colourless until you hover something.
 const anchor =
-  "border-b border-line-strong pb-px text-foreground transition-colors hover:border-accent hover:text-accent-hover";
+  "border-b border-accent/40 pb-px text-foreground transition-colors hover:border-accent hover:text-accent-hover";
 
 // Anchored below the link and centred on it: the intro sits near the top of the
 // page, so a card above would run off-screen under the sticky nav, and centring

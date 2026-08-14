@@ -13,7 +13,7 @@ export const sectionLabel =
   "font-serif text-[1.9rem] font-normal leading-[1.1] tracking-[-0.01em] lowercase text-foreground";
 
 export const sectionAll =
-  "font-mono text-[0.7rem] lowercase whitespace-nowrap text-faint transition-colors hover:text-foreground group";
+  "font-mono text-[0.7rem] lowercase whitespace-nowrap text-accent/80 transition-colors hover:text-accent-hover group";
 
 // Dashed cell dividers: top/left on the container, bottom/right on each cell,
 // so interior rules never double up.
@@ -38,7 +38,7 @@ export const rowQuote =
 
 export const tags = "mt-3 flex flex-wrap gap-[0.65rem]";
 
-export const tag = "font-mono text-[0.68rem] lowercase text-faint";
+export const tag = "font-mono text-[0.68rem] lowercase text-accent/55";
 
 export const footer =
   "mt-18 flex flex-wrap justify-between gap-4 border-t border-dashed border-line pt-5 font-mono text-[0.7rem] lowercase text-faint";
