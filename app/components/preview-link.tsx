@@ -14,8 +14,12 @@ const anchor =
 // Anchored below the link and centred on it: the intro sits near the top of the
 // page, so a card above would run off-screen under the sticky nav, and centring
 // halves how far it can overhang either edge of the text column.
+// `hidden hoverable:block` rather than opacity alone: opacity-0 still occupies
+// layout, and a 288px card centred on a link near the right edge hangs past the
+// text column and gives the page horizontal overflow. On touch the card can
+// never be shown anyway, so it shouldn't be in the layout to begin with.
 const card =
-  "pointer-events-none absolute top-full left-1/2 z-20 mt-2 w-72 max-w-[calc(100vw-2rem)] origin-top " +
+  "hidden hoverable:block pointer-events-none absolute top-full left-1/2 z-20 mt-2 w-72 max-w-[calc(100vw-2rem)] origin-top " +
   "-translate-x-1/2 translate-y-1 scale-[0.98] opacity-0 transition-all duration-150 " +
   "hoverable:group-hover:translate-y-0 hoverable:group-hover:scale-100 " +
   "hoverable:group-hover:opacity-100 " +
