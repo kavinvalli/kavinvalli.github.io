@@ -40,6 +40,12 @@
     scroll-behavior: smooth;
     color-scheme: dark;
     -webkit-tap-highlight-color: transparent;
+    /* `clip`, not `hidden`: hidden would make this a scroll container and
+       break the sticky nav. clip pairs with a visible vertical axis without
+       coercing it, so the page still scrolls down but can never scroll
+       sideways — whatever overhangs. The hover cards are centred on their
+       link and a link near the right edge pushes one past the edge. */
+    overflow-x: clip;
   }
 
   body {
@@ -51,10 +57,14 @@
     min-height: 100vh;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+    /* Pools behind the page heading rather than sitting off the top edge —
+       every route puts its title in the same place, so one gradient anchored
+       to the top of the document lands behind all of them. The cursor glow
+       adds to this where the pointer is, which is where it came from. */
     background-image: radial-gradient(
-      60rem 30rem at 50% -12rem,
-      --alpha(var(--color-accent) / 8%),
-      transparent 70%
+      38rem 20rem at 38% 5rem,
+      --alpha(var(--color-accent) / 14%),
+      transparent 72%
     );
     background-repeat: no-repeat;
   }
@@ -368,6 +378,40 @@ dialog[open]::backdrop {
 @keyframes backdrop-in {
   from {
     opacity: 0;
+  }
+}
+
+/* The nav's frosted panel. Solid by default so that any browser without
+   scroll-driven animations keeps today's behaviour — legible links over a
+   backdrop — and only browsers that can do the fade get the transparent top.
+   Its own layer rather than a background on <nav>, because opacity is the one
+   property that fades a backdrop-filter cleanly. */
+.nav-surface {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: --alpha(var(--color-background) / 80%);
+  backdrop-filter: blur(12px) saturate(1.5);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: scroll()) {
+    .nav-surface {
+      animation: nav-surface-in linear both;
+      animation-timeline: scroll(root block);
+      /* fully solid within the first few rem of scrolling, so it isn't
+         still fading in halfway down the page */
+      animation-range: 0 4rem;
+    }
+  }
+}
+
+@keyframes nav-surface-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
 

@@ -16,10 +16,10 @@ export function Nav() {
   const pathname = usePathname();
 
   return (
-    <nav
-      aria-label="Main"
-      className="sticky top-0 z-10 bg-background/80 backdrop-blur-md backdrop-saturate-150"
-    >
+    <nav aria-label="Main" className="sticky top-0 z-10">
+      {/* the frosted panel, on its own layer so it can fade in on scroll while
+          the links stay put — see .nav-surface in globals */}
+      <span aria-hidden="true" className="nav-surface" />
       <div className="mx-auto flex w-full max-w-(--width-wide) gap-6 px-gutter py-[1.1rem]">
         {items.map((item) => {
           const active =

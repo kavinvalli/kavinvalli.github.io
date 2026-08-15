@@ -21,10 +21,8 @@ export async function Contributions({ login }: { login: string }) {
   return (
     <section className="section" data-reveal>
       <div className="flex flex-col gap-0 mb-4">
-        <div className={s.sectionHead}>
-          <p className="mb-0 flex items-baseline justify-between gap-4">
-            Contributions
-          </p>
+        <div className="mb-0 flex items-baseline justify-between gap-4">
+          <p className={s.sectionLabel}>Contributions</p>
           <a
             className={s.sectionAll}
             href={`https://github.com/${login}`}
