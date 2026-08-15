@@ -85,11 +85,13 @@ export default function Home() {
         </a>
       </div>
 
+      <Contributions login="kavinvalli" />
       <Now />
 
-      <Music />
 
-      <Contributions login="kavinvalli" />
+      {/* last on purpose — the page closes on something personal rather than
+          on a commit graph */}
+      <Music />
 
       <footer className={s.footer}>
         <span>© {new Date().getFullYear()} Kavin Desi Valli</span>

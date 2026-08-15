@@ -20,16 +20,23 @@ export async function Contributions({ login }: { login: string }) {
 
   return (
     <section className="section" data-reveal>
-      <div className={s.sectionHead}>
-        <p className={s.sectionLabel}>Contributions</p>
-        <a
-          className={s.sectionAll}
-          href={`https://github.com/${login}`}
-          target="_blank"
-          rel="noreferrer"
-        >
-          {data.total.toLocaleString()} this year
-        </a>
+      <div className="flex flex-col gap-0 mb-4">
+        <div className={s.sectionHead}>
+          <p className="mb-0 flex items-baseline justify-between gap-4">
+            Contributions
+          </p>
+          <a
+            className={s.sectionAll}
+            href={`https://github.com/${login}`}
+            target="_blank"
+            rel="noreferrer"
+          >
+            {data.total.toLocaleString()} this year
+          </a>
+        </div>
+        <p className="font-mono text-[0.7rem] lowercase text-faint">
+          am i really a dev if i don't put up my github contribution chart?
+        </p>
       </div>
 
       <div className="overflow-x-auto overscroll-x-contain [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
