@@ -9,9 +9,12 @@
 // good ranking, nothing to play.
 
 export type Track = {
+  // Deezer's track id, not a preview URL. Preview URLs are signed with an
+  // expiry ~12 minutes out, so one stored in a built page is always dead by
+  // the time someone clicks — /api/theme/[id] resolves a fresh one instead.
+  id: number;
   name: string;
   artist: string;
-  previewUrl: string;
   // where the preview came from, so it points somewhere
   link: string | null;
 };
@@ -19,6 +22,7 @@ export type Track = {
 type Album = { id: number; title: string };
 
 type DeezerTrack = {
+  id: number;
   title: string;
   // the title with any "(from ...)" parenthetical already stripped
   title_short?: string;
@@ -80,9 +84,9 @@ export async function getSoundtrack(title: string): Promise<Track | null> {
     );
 
     return {
+      id: track.id,
       name: track.title_short?.trim() || track.title.trim(),
       artist: track.artist?.name ?? "",
-      previewUrl: track.preview!,
       link: track.link ?? null,
     };
   } catch {

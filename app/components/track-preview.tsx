@@ -69,7 +69,7 @@ export function TrackPreview({ track }: { track: Track }) {
           who never clicks */}
       <audio
         ref={audioRef}
-        src={track.previewUrl}
+        src={`/api/theme/${track.id}`}
         preload="none"
         onEnded={() => setPlaying(false)}
       />
