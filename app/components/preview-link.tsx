@@ -19,23 +19,40 @@ const anchor =
 // text column and gives the page horizontal overflow. On touch the card can
 // never be shown anyway, so it shouldn't be in the layout to begin with.
 const card =
+  // whitespace-normal/normal-case/font-sans reset what the card would
+  // otherwise inherit from whatever it sits inside — the music credit line is
+  // mono, lowercase and nowrap, and nowrap in particular runs the card's text
+  // straight out of a fixed-width box.
   "hidden hoverable:block pointer-events-none absolute top-full left-1/2 z-20 mt-2 w-72 max-w-[calc(100vw-2rem)] origin-top " +
+  "whitespace-normal normal-case font-sans " +
   "-translate-x-1/2 translate-y-1 scale-[0.98] opacity-0 transition-all duration-150 " +
   "hoverable:group-hover:translate-y-0 hoverable:group-hover:scale-100 " +
   "hoverable:group-hover:opacity-100 " +
-  "border border-line bg-background/95 backdrop-blur-sm";
+  // Lighter fill than it looks like it needs, with the blur carrying the
+  // legibility instead. The glow now sits right behind the intro, and a
+  // near-opaque panel over a lit background reads as a slab rather than glass.
+  "border border-line bg-background/85 backdrop-blur-md";
 
 export async function PreviewLink({
   href,
   children,
+  className,
 }: {
   href: string;
   children: React.ReactNode;
+  // callers outside the intro paragraph keep their own link styling; the
+  // amber-underline treatment is only right at body size
+  className?: string;
 }) {
   const preview = await getLinkPreview(href);
 
   const link = (
-    <a className={anchor} href={href} target="_blank" rel="noreferrer">
+    <a
+      className={className ?? anchor}
+      href={href}
+      target="_blank"
+      rel="noreferrer"
+    >
       {children}
     </a>
   );
@@ -61,7 +78,7 @@ export async function PreviewLink({
                 src={preview.favicon}
                 alt=""
                 loading="lazy"
-                className="size-3 shrink-0 object-contain"
+                className="size-4 shrink-0 object-contain"
               />
             )}
             {preview.domain}
@@ -69,13 +86,6 @@ export async function PreviewLink({
           <span className="mt-1.5 block font-serif text-[0.95rem] leading-snug text-foreground">
             {preview.title}
           </span>
-          {/* no `block` on the description — it and line-clamp both set
-              display, and block wins */}
-          {preview.description && (
-            <span className="mt-1 line-clamp-2 text-[0.75rem] leading-snug text-muted">
-              {preview.description}
-            </span>
-          )}
         </span>
       </span>
     </span>

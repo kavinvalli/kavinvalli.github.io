@@ -14,6 +14,6 @@ export const musicNote =
   "rediscovered my love for playing music when i came to university";
 
 export const musicGroups = [
-  { handle: "@taranatoronto", href: "https://www.instagram.com/taranatoronto" },
   { handle: "@uw.mehfil", href: "https://www.instagram.com/uw.mehfil/" },
+  { handle: "@taranatoronto", href: "https://www.instagram.com/taranatoronto" },
 ];

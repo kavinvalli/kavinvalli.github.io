@@ -61,8 +61,11 @@
        every route puts its title in the same place, so one gradient anchored
        to the top of the document lands behind all of them. The cursor glow
        adds to this where the pointer is, which is where it came from. */
+    /* Capped against the viewport as well as in absolute terms: 38rem is
+       wider than a phone, so a fixed size stops reading as a pool behind the
+       title and just tints the whole screen. */
     background-image: radial-gradient(
-      38rem 20rem at 38% 5rem,
+      min(38rem, 80vw) min(20rem, 42vw) at 38% 5rem,
       --alpha(var(--color-accent) / 14%),
       transparent 72%
     );
@@ -342,9 +345,11 @@ html[data-motion] [data-sweep][data-revealed] > * {
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.5s ease;
+  /* 8%, not the 12% this was tuned to on its own — it now rides on top of the
+     14% wash behind the heading, and the two add where they overlap. */
   background: radial-gradient(
     circle,
-    --alpha(var(--color-accent) / 12%),
+    --alpha(var(--color-accent) / 10%),
     transparent 63%
   );
   filter: blur(50px);

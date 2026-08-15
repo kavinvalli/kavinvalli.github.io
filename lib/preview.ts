@@ -15,6 +15,11 @@ export type LinkPreview = {
 const UA =
   "Mozilla/5.0 (compatible; kavin.me link preview; +https://kavin.me)";
 
+// Two days. Longer would be fine for the metadata itself, but Meta signs its
+// avatar URLs with an expiry roughly five days out — refetching well inside
+// that window keeps the icon from going dead between deploys.
+const PREVIEW_TTL = 172_800;
+
 function meta(html: string, key: string): string | null {
   const patterns = [
     new RegExp(
@@ -33,14 +38,27 @@ function meta(html: string, key: string): string | null {
   return null;
 }
 
+function codePoint(value: number): string {
+  // out-of-range or malformed escapes would throw; leave those as they were
+  try {
+    return String.fromCodePoint(value);
+  } catch {
+    return "";
+  }
+}
+
 function decode(value: string): string {
   return value
     .replace(/&amp;/g, "&")
     .replace(/&lt;/g, "<")
     .replace(/&gt;/g, ">")
     .replace(/&quot;/g, '"')
-    .replace(/&#0?39;|&apos;|&#x27;/g, "'")
+    .replace(/&apos;/g, "'")
     .replace(/&nbsp;/g, " ")
+    // numeric escapes, decimal and hex — Instagram writes @ as &#064; and the
+    // bullet as &#x2022;, and there's no shortlist that covers every site
+    .replace(/&#x([0-9a-f]+);/gi, (match, hex) => codePoint(parseInt(hex, 16)) || match)
+    .replace(/&#(\d+);/g, (match, dec) => codePoint(Number(dec)) || match)
     .trim();
 }
 
@@ -53,12 +71,30 @@ function absolute(value: string | null, base: string): string | null {
   }
 }
 
+// On a profile page the og:image is the account's avatar, not a cover image:
+// Meta serves it at s100x100, so stretching it across the card's 288px-wide
+// hero slot is a 3x upscale. It belongs in the icon slot instead, where it
+// beats the site's generic favicon — you get the group's logo, not Instagram's.
+//
+// Those URLs are also signed with an `oe=` expiry a few days out, which is why
+// PREVIEW_TTL is shorter than it would otherwise need to be.
+const AVATAR_IMAGE_HOSTS = /(^|\.)(cdninstagram\.com|fbcdn\.net)$/i;
+
+function isAvatar(value: string | null): boolean {
+  if (!value) return false;
+  try {
+    return AVATAR_IMAGE_HOSTS.test(new URL(value).hostname);
+  } catch {
+    return false;
+  }
+}
+
 export async function getLinkPreview(url: string): Promise<LinkPreview | null> {
   try {
     const res = await fetch(url, {
       headers: { "User-Agent": UA, Accept: "text/html" },
       signal: AbortSignal.timeout(8000),
-      next: { revalidate: 604800 },
+      next: { revalidate: PREVIEW_TTL },
     });
     if (!res.ok) return null;
 
@@ -75,16 +111,22 @@ export async function getLinkPreview(url: string): Promise<LinkPreview | null> {
       /<link[^>]+rel=["'][^"']*icon[^"']*["'][^>]+href=["']([^"']+)/i
     )?.[1];
 
+    const ogImage = absolute(
+      meta(html, "og:image") ?? meta(html, "twitter:image"),
+      url
+    );
+    const siteIcon = absolute(iconHref ?? "/favicon.ico", url);
+    // an avatar is the account's own mark — better in the icon slot than the
+    // platform's favicon, and it isn't a cover image so it can't be the hero
+    const avatar = isAvatar(ogImage);
+
     return {
       url,
       domain: new URL(url).hostname.replace(/^www\./, ""),
       title,
       description: meta(html, "og:description") ?? meta(html, "description"),
-      image: absolute(
-        meta(html, "og:image") ?? meta(html, "twitter:image"),
-        url
-      ),
-      favicon: absolute(iconHref ?? "/favicon.ico", url),
+      image: avatar ? null : ogImage,
+      favicon: avatar ? ogImage : siteIcon,
     };
   } catch {
     return null;
