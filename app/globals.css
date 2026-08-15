@@ -402,6 +402,13 @@ dialog[open]::backdrop {
 @media (prefers-reduced-motion: no-preference) {
   @supports (animation-timeline: scroll()) {
     .nav-surface {
+      /* Transparent as the base state, not just as the animation's first
+         frame. A scroll timeline whose container can't scroll is *inactive*,
+         and an inactive timeline means the animation doesn't apply — the
+         element falls back to base style. Without this, any page short enough
+         to fit the window (writing, usually) showed a solid bar with nothing
+         behind it to justify one. */
+      opacity: 0;
       animation: nav-surface-in linear both;
       animation-timeline: scroll(root block);
       /* fully solid within the first few rem of scrolling, so it isn't
