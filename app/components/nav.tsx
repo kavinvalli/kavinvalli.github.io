@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { ThemeToggle } from "./theme-toggle";
 
 // Persistent across routes so switching tabs swaps only the content below —
 // it should read as one site, not as navigating away.
@@ -43,6 +44,11 @@ export function Nav() {
             </Link>
           );
         })}
+
+        {/* pushed to the far edge by its own ml-auto — it's a control, not
+            another destination, and shouldn't read as part of the run of
+            links */}
+        <ThemeToggle />
       </div>
 
       {/* reading position — drawn from the scroll offset in CSS, see globals */}

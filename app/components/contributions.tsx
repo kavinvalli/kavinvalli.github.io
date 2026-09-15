@@ -6,7 +6,7 @@ const DAY_LABELS = ["", "Mon", "", "Wed", "", "Fri", ""];
 
 // the legend reuses the cell styling; the chart's own copy lives with the grid
 const cell =
-  "w-[var(--gh-cell)] h-[var(--gh-cell)] bg-card outline outline-white/5 -outline-offset-1 " +
+  "w-[var(--gh-cell)] h-[var(--gh-cell)] bg-card outline outline-foreground/5 -outline-offset-1 " +
   "data-[level=1]:bg-accent/28 data-[level=2]:bg-accent/50 " +
   "data-[level=3]:bg-accent/72 data-[level=4]:bg-accent/95";
 
