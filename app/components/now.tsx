@@ -1,6 +1,7 @@
 import Link from "next/link";
+import { bookStars, getCurrentBook, profileUrl } from "../../lib/goodreads";
 import { getLatestFilm, stars } from "../../lib/letterboxd";
-import { letterboxdUser, now, nowUpdated } from "../../lib/now";
+import { goodreadsUser, letterboxdUser, now, nowUpdated } from "../../lib/now";
 import { getSoundtrack } from "../../lib/soundtrack";
 import type { Track } from "../../lib/soundtrack";
 import { getAllPosts } from "../../lib/writing";
@@ -28,6 +29,10 @@ async function resolve(): Promise<ResolvedEntry[]> {
     ? await getLatestFilm(letterboxdUser)
     : null;
   const track = film ? await getSoundtrack(film.title) : null;
+
+  const reading = now.some((entry) => entry.latestBook)
+    ? await getCurrentBook(goodreadsUser)
+    : null;
 
   return now.flatMap((entry): ResolvedEntry[] => {
     if (entry.latestPost) {
@@ -63,6 +68,27 @@ async function resolve(): Promise<ResolvedEntry[]> {
           source: {
             label: "letterboxd",
             href: `https://letterboxd.com/${letterboxdUser}/films/diary/`,
+          },
+        },
+      ];
+    }
+
+    if (entry.latestBook) {
+      if (!reading) return [];
+      const { book, shelf } = reading;
+      return [
+        {
+          // "reading" only holds while the book is actually on the go
+          label:
+            shelf === "read" ? entry.finishedLabel ?? entry.label : entry.label,
+          value: book.title,
+          href: book.url,
+          // stars only exist on a finished book; currently-reading is unrated
+          noteLead: bookStars(book.rating) || undefined,
+          note: entry.note ?? book.author ?? undefined,
+          source: {
+            label: "goodreads",
+            href: profileUrl(goodreadsUser),
           },
         },
       ];

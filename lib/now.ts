@@ -12,10 +12,18 @@ export type NowEntry = {
   latestPost?: boolean;
   // fills value + href + note from the most recent Letterboxd diary entry
   latestFilm?: boolean;
+  // fills value + href + note from Goodreads: whatever is on the
+  // currently-reading shelf, or the most recently finished book if nothing is
+  latestBook?: boolean;
+  // used in place of `label` when it falls back to a finished book
+  finishedLabel?: string;
 };
 
 // whose Letterboxd diary `latestFilm` reads
 export const letterboxdUser = "kavinvalli";
+
+// the numeric id from a Goodreads profile URL, which `latestBook` reads
+export const goodreadsUser = "113849536";
 
 export const nowUpdated = "2026-08";
 
@@ -31,9 +39,10 @@ export const now: NowEntry[] = [
   },
   {
     label: "reading",
-    value: "The Guest List",
-    href: "https://www.goodreads.com/en/book/show/52656911-the-guest-list",
-    note: "the same book for about two months now — i almost only read when i travel 😭 (it's a great book though!)",
+    latestBook: true,
+    finishedLabel: "last read",
+    // without a note the author fills this line; set one to override
+    // note: "the same book for about two months now — i almost only read when i travel 😭 (it's a great book though!)",
   },
   {
     label: "last watched",

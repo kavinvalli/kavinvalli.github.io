@@ -18,6 +18,13 @@ export const projects: Project[] = [
     slug: "pipelined-matrix-vector-accelerator",
   },
   {
+    name: "Helicone AI Gateway",
+    description:
+      "An open-source Rust gateway putting 100+ LLM providers behind one OpenAI-compatible API, with load balancing, caching and rate limiting at sub-5ms overhead. Built several of its core features before we folded the idea back into Helicone's existing Cloudflare Workers stack.",
+    stack: ["Rust", "Tokio", "Axum", "Redis"],
+    link: "https://github.com/helicone/ai-gateway",
+  },
+  {
     name: "Liberty",
     description:
       "A browser-based 3D visualisation of the International Space Station in realtime. Won 2nd place at the NASA Space Apps regional round among 90+ teams.",
