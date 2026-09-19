@@ -1,6 +1,8 @@
 // Letterboxd publishes a public RSS feed per member — no key, no auth, no
 // expiring token. Films only; Letterboxd doesn't track TV.
 
+export const FILM_TAG = "letterboxd-film";
+
 export type Film = {
   title: string;
   year: string | null;
@@ -29,7 +31,9 @@ export async function getLatestFilm(username: string): Promise<Film | null> {
     const res = await fetch(`https://letterboxd.com/${username}/rss/`, {
       headers: { "User-Agent": "kavin.me (+https://kavin.me)" },
       signal: AbortSignal.timeout(8000),
-      next: { revalidate: 21600 },
+      // Six hours on its own, or immediately via POST /api/revalidate — a film
+      // logged just now shouldn't have to wait out the window.
+      next: { revalidate: 21600, tags: [FILM_TAG] },
     });
     if (!res.ok) return null;
 

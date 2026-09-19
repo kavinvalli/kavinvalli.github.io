@@ -59,7 +59,7 @@ export async function getContributions(
       },
       body: JSON.stringify({ query: QUERY, variables: { login } }),
       // Contributions change at most a few times a day; hourly is plenty.
-      // Tagged so it can be purged on demand via revalidateTag(CONTRIBUTIONS_TAG).
+      // Tagged so it can also be purged on demand via POST /api/revalidate.
       next: { revalidate: 3600, tags: [CONTRIBUTIONS_TAG] },
     });
 
