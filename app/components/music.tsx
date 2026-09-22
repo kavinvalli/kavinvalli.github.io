@@ -27,7 +27,7 @@ export function Music() {
           </p>
         </div>
 
-        {/* same aside treatment as the contributions heading */}
+        {/* aside sits under the heading row, in the same muted mono as the meta */}
         <p className="font-mono text-[0.7rem] lowercase text-pretty text-faint">
           {musicNote}
         </p>
