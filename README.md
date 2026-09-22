@@ -21,3 +21,6 @@ Drop an `.mdx` file in `content/writing/`. Newest `date` sorts first; `draft: tr
 pnpm install
 pnpm dev
 ```
+
+Edited using replicas
+
