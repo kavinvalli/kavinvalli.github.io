@@ -18,6 +18,13 @@ export const projects: Project[] = [
     slug: "pipelined-matrix-vector-accelerator",
   },
   {
+    name: "Replicas",
+    description:
+      "Cloud coding agents that run in isolated sandboxes and open PRs on your behalf.",
+    stack: ["TypeScript", "Next.js", "Postgres", "E2B"],
+    link: "https://replicas.dev",
+  },
+  {
     name: "Helicone AI Gateway",
     description:
       "An open-source Rust gateway putting 100+ LLM providers behind one OpenAI-compatible API, with load balancing, caching and rate limiting at sub-5ms overhead. Built several of its core features before we folded the idea back into Helicone's existing Cloudflare Workers stack.",
