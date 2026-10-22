@@ -62,7 +62,7 @@ export function TrackPreview({ track }: { track: Track }) {
         }
         className="shrink-0 whitespace-nowrap text-accent/70 transition-colors hover:text-accent-hover"
       >
-        {playing ? "■" : "▶ theme"}
+        {playing ? "■" : "▶ top track"}
       </button>
 
       {/* preload="none" — 30s of audio shouldn't be fetched by every visitor
