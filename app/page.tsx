@@ -29,7 +29,11 @@ export default function Home() {
         <PreviewLink href="https://tryreplicas.com">
           Replicas
         </PreviewLink>{" "}
-        (YC P26). Before that, I worked on the{" "}
+        (YC P26), and joining{" "}
+        <PreviewLink href="https://mintlify.com">
+          Mintlify
+        </PreviewLink>{" "}
+        for my winter 2027 co-op. Before that, I worked on the{" "}
         <PreviewLink href="https://v0.app">
           v0
         </PreviewLink>{" "}
