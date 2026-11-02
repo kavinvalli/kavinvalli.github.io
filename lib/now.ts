@@ -52,7 +52,7 @@ export const now: NowEntry[] = [
     label: "studying",
     value: "computer engineering at Waterloo",
     href: "https://uwaterloo.ca",
-    note: "this term: real-time operating systems, digital hardware systems, communication systems, analog control systems, and business technology & infrastructure",
+    note: "this term: computer architecture, computer networks, compilers, fundamentals of computer intelligence (intro to ML), introductory earth sciences",
   },
   // {
   //   label: "maintaining",
