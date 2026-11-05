@@ -1,5 +1,7 @@
 # kavin.me
 
+hi kavin
+
 My personal site — [kavin.me](https://kavin.me). Next.js (App Router), deployed on Vercel.
 
 ## Structure
