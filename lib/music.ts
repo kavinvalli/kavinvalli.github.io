@@ -8,6 +8,7 @@ export const musicPhotos: string[] = [
   "/images/music/4.jpg",
   "/images/music/5.jpg",
   "/images/music/6.jpg",
+  "/images/music/7.jpg",
 ];
 
 export const musicNote =
