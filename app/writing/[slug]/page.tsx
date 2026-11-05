@@ -64,8 +64,11 @@ export default async function Article({
       </article>
 
       <footer className={s.footer}>
-        <Link href="/writing">← All writing</Link>
-        <Link href="/">kavin.me</Link>
+        <span>© {new Date().getFullYear()} Kavin Desi Valli</span>
+        <span className="flex gap-4">
+          <Link href="/writing">← All writing</Link>
+          <Link href="/">kavin.me</Link>
+        </span>
       </footer>
     </main>
   );
