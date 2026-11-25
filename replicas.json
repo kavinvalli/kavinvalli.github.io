@@ -1,4 +1,3 @@
 {
-  "ports": [3000],
-  "infra": "./infra/replicas.yaml"
+  "ports": [3000]
 }
