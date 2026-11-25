@@ -1,0 +1,4 @@
+environment:
+  variables:
+    IAC_TEST_MODE: "v1"
+
