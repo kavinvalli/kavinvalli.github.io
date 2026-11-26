@@ -71,8 +71,11 @@ export default async function ProjectPage({
       </article>
 
       <footer className={s.footer}>
-        <Link href="/projects">← all projects</Link>
-        <Link href="/">kavin.me</Link>
+        <span>© {new Date().getFullYear()} Kavin Desi Valli</span>
+        <span className="flex gap-4">
+          <Link href="/projects">← all projects</Link>
+          <Link href="/">kavin.me</Link>
+        </span>
       </footer>
     </main>
   );
