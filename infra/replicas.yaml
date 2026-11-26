@@ -1,4 +1,4 @@
 environment:
   variables:
-    IAC_TEST_MODE: "v2"
+    IAC_TEST_MODE: "v3"
 
